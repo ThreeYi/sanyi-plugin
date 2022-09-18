@@ -4,7 +4,7 @@ import fs from "node:fs";
 logger.info(`-----------加载三一插件---------------`);
 
 const files = fs
-  .readdirSync("./plugins/sanyi/apps")
+  .readdirSync("./plugins/sanyi-plugin/apps")
   .filter((file) => file.endsWith(".js"));
 
 let apps = {};
