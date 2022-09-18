@@ -1,10 +1,10 @@
 # sanyi
 
 #### 介绍
-Yunzai-Bot插件
+Yunzai-Bot插件，文件之间的互相调用很少，无配置文件，想自己写插件的可以参考一下
 
 #### 软件架构
-根据小雪插件自己改的插件
+根据小雪插件和闲心插件的代码自己改的插件，感谢两位佬的开源代码
 
 功能：
 
@@ -12,15 +12,17 @@ Yunzai-Bot插件
 
       2、上下班
 
-      3、通过训练提升好感度好感度
+      3、通过训练提升好感度
    
 
 
 #### 安装教程
 
+在Yunzai-Bot目录下运行以下命令，完成后重启Bot
+
 
 ```
-git clone https://gitee.com/ThreeYi/sanyi.git
+git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
   
@@ -37,5 +39,7 @@ git clone https://gitee.com/ThreeYi/sanyi.git
  1、#优菈上班
 
  2、训练
+
+ 3、群聊双击机器人头像出发戳一戳，私聊不会触发
 
 
