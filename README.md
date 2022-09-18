@@ -38,4 +38,6 @@ git clone https://gitee.com/ThreeYi/sanyi.git
 
  2、训练
 
+ 3、群聊双击机器人头像出发戳一戳，私聊不会触发
+
 
