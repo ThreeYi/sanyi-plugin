@@ -18,9 +18,11 @@ Yunzai-Bot插件，文件之间的互相调用很少，无配置文件，想自�
 
 #### 安装教程
 
+在Yunzai-Bot目录下运行以下命令，完成后重启Bot
+
 
 ```
-git clone https://gitee.com/ThreeYi/sanyi.git
+git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
   
