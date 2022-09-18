@@ -14,7 +14,8 @@ Yunzai-Bot插件
 #### 安装教程
 
 git clone https://gitee.com/ThreeYi/sanyi.git
-  之后重启机器人
+  
+之后重启机器人
 
 #### 使用说明
 1、无需环境配置，能使用云崽和喵喵插件这个就能正常用
