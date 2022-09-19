@@ -18,7 +18,7 @@ export class te extends plugin {
 
   async yuyin(e) {
 
-   pwd=process.cwd()
+   let pwd=process.cwd()
     e.reply(pwd)
 
   }
