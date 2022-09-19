@@ -52,7 +52,7 @@ export class train extends plugin {
         trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
-        if ((String(trainriqi) = String(this.riqi())) && cishu < 5) {
+        if (trainriqi = this.riqi() && cishu < 5) {
 
             this.training(favorability,cishu,value,a,b)
             // this.e.reply("fnc1")
@@ -76,8 +76,8 @@ export class train extends plugin {
         // let target = groupmembermap.get(e.target_id)
         let a = "优菈"
         let b = e.nickname    // 获取发消息人的昵称
-        let value = -5 // 好感度改变值
-        value += Math.ceil((Math.random() * 6) - 2)
+        let value = -2 // 好感度改变值
+        value += Math.ceil(Math.random() * 6)
         await this.changeFavorability(a, b, value)
 
     }
