@@ -76,7 +76,7 @@ export class train extends plugin {
             }
         }
         else {
-            let a= await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
+            var a= await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
             this.reply("今天已经训练好久了，休息一下明天再来吧!\n当前好感度"+a)
         }
     }
