@@ -41,7 +41,7 @@ export class train extends plugin {
         let a="优菈"
         let b= e.nickname    // 获取发消息人的昵称
         let value = 0 // 好感度改变值
-        value += Math.ceil((Math.random() * 10)-3)
+        value += Math.ceil((Math.random() * 5)-2)
         await this.changeFavorability(a, b, value)
 
     }
