@@ -27,7 +27,7 @@ export class youla extends plugin {
                     fnc: 'wanan',
                 },
                 {
-                    reg: "@优菈·劳伦斯贴贴",
+                    reg: "贴贴",
                     fnc: 'tietie',
                 },
                 {
