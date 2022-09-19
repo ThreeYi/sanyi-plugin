@@ -27,6 +27,7 @@ export class train extends plugin {
         cishu += 1
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, cishu)
+        await e.reply(cishu)
         if (value > 0) {
             await this.reply(`训练很卖力呢，恭喜！\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
         }
@@ -72,7 +73,7 @@ export class train extends plugin {
         // let target = groupmembermap.get(e.target_id)
         let a = "优菈"
         let b = e.nickname    // 获取发消息人的昵称
-        let value = 0 // 好感度改变值
+        let value = -5 // 好感度改变值
         value += Math.ceil((Math.random() * 6) - 2)
         await this.changeFavorability(a, b, value)
 
