@@ -55,7 +55,7 @@ export class train extends plugin {
         if (trainriqi = Number(this.riqi()) && cishu < 3) {
 
             this.training(favorability, cishu, value, a, b)
-            // this.e.reply("fnc1")
+            this.e.reply("fnc1")
 
         }
         else if (trainriqi != Number(this.riqi())) {
@@ -63,7 +63,7 @@ export class train extends plugin {
             this.training(favorability, cishu, value, a, b)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 1)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(this.riqi()))
-            // this.e.reply('func2')
+            this.e.reply('func2')
 
         }
         else {
