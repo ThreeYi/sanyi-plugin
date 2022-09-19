@@ -31,7 +31,7 @@ export class train extends plugin {
 
         let b = e.nickname
         let value = -1
-        value += Math.ceil(Math.random() * 5)
+        value += Math.floor(Math.random()*5)
 
         let favorability = await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
@@ -76,7 +76,8 @@ export class train extends plugin {
             }
         }
         else {
-            this.reply("今天已经训练好久了，休息一下明天再来吧")
+            let a= await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
+            this.reply("今天已经训练好久了，休息一下明天再来吧!\n当前好感度"+a)
         }
     }
 }
