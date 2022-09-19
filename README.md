@@ -25,14 +25,13 @@ Yunzai-Bot插件，文件之间的互相调用很少，无配置文件，想自�
 git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
-  
-之后重启机器人
+
 
 #### 使用说明
 
 1、无需环境配置，能使用云崽和喵喵插件这个就能正常用
 
-2、报错就去改文件路径，相对路径不会写，用的绝对路径
+2、报错去看看文件路径是不是有问题
 
 #### 命令
 
