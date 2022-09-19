@@ -27,7 +27,7 @@ export class train extends plugin {
         cishu += 1
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, cishu)
-        await this.e.reply(String(cishu))
+        // await this.e.reply(String(cishu))
         if (value > 0) {
             await this.reply(`训练很卖力呢，恭喜！\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
         }
@@ -52,17 +52,17 @@ export class train extends plugin {
         trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
-        if ((trainriqi = this.riqi()) && cishu < 5) {
+        if ((String(trainriqi) = String(this.riqi())) && cishu < 5) {
 
             this.training(favorability,cishu,value,a,b)
-            this.e.reply("fnc1")
+            // this.e.reply("fnc1")
 
         }
         else if (String(trainriqi) != String(this.riqi() )) {
            
             this.training(favorability,cishu,value,a,b)
-    
-            this.e.reply('func2')
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, String(this.riqi()))
+            // this.e.reply('func2')
 
         }
         else {
