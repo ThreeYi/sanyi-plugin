@@ -1,6 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js'
-var nowtime = new Date()
-let d = nowtime.getDate()
+
 export class te extends plugin {
   constructor() {
     super({
@@ -19,9 +18,11 @@ export class te extends plugin {
 
 
   async yuyin(e) {
-    console.info(d)
-
-    // e.reply(d)
+    // console.info(d)
+    var nowtime = new Date()
+    let d = nowtime.getDate()
+    let da=d.toString()
+     e.reply(da)
 
   }
 }
