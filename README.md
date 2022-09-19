@@ -25,8 +25,7 @@ Yunzai-Bot插件，文件之间的互相调用很少，无配置文件，想自�
 git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
-  
-之后重启机器人
+
 
 #### 使用说明
 
