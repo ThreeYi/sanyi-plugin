@@ -45,6 +45,9 @@ export class train extends plugin {
         riqi = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
         cishu = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
         if (riqi = nowday() && cishu < 3) {
+            this.reply("成功0"+riqi)
+
+
             favorability += value
             cishu += 1
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, favorability)
