@@ -18,10 +18,10 @@ export class te extends plugin {
 
   async yuyin(e) {
 
-    let a=new Date()
-    let pwd=a.getDate()
+    var nowtime=new Date()
+    let d=nowtime.getDate()
 
-    e.reply(pwd)
+    e.reply(d)
 
   }
 }
