@@ -17,7 +17,7 @@ export class train extends plugin {
     async riqi() {
         // console.info(d)
         var nowtime = new Date()
-        let d = nowtime.getDate()
+        let da = nowtime.getDate()
         // let da=d.toString()
         return da
 
@@ -50,7 +50,7 @@ export class train extends plugin {
             favorability[2] += value
             favorability[1] +=1
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
-            
+
             if (value > 0) {
                 await this.reply(`训练很卖力呢，恭喜！\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability[2]}`)
             }
