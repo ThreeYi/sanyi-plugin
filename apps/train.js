@@ -42,10 +42,10 @@ export class train extends plugin {
     }
     async changeFavorability(a, b, value) {
         // 先获取 甲 对 乙 的好感度
-        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
-        let trainriqi = await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`)
-        let cishu = await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`)
-        if (!favorability || !trainriqi || !cishu || (typeof(trainriqi) != 'string')) {
+        let favorability_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
+        let trainriqi_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`)
+        let cishu_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`)
+        if (!favorability_0 || !trainriqi_0 || !cishu_0 || (typeof(trainriqi) != 'string')) {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, 0)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(riqi()))
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 0)
