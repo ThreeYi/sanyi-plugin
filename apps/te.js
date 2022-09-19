@@ -18,7 +18,8 @@ export class te extends plugin {
 
   async yuyin(e) {
 
-    e.reply("打包成功")
+   pwd=process.cwd()
+    e.reply(pwd)
 
   }
 }
