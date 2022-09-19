@@ -75,12 +75,13 @@ export class train extends plugin {
                 this.reply(`训练的还行\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
-        else if (riqi != nowday() && cishu > 2 && cishu <5) {
+        else if (riqi != nowday() && cishu > 2) {
+
             
             favorability += value
-            cishu = 0
+            
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, favorability)
-            await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, cishu)
+            await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, 0)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, nowday())
             if (value > 0) {
                 this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
