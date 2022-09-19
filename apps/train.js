@@ -51,9 +51,9 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 0)
             this.e.reply('初始化好感度'+typeof(trainriqi)+!favorability+!trainriqi+ !cishu)
         }
-        favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
-        trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
-        cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
+        let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
+        let trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
+        let  cishu= Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
         if (trainriqi = Number(riqi()) && cishu < 3) {
 
