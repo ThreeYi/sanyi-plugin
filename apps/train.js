@@ -42,18 +42,18 @@ export class train extends plugin {
     }
     async changeFavorability(a, b, value) {
         // 先获取 甲 对 乙 的好感度
-        let favorability_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
-        let trainriqi_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`)
-        let cishu_0 = await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`)
+        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
+        let trainriqi = await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`)
+        let cishu = await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`)
         if (!favorability_0 || !trainriqi_0 || !cishu_0 || (typeof(trainriqi) != 'string')) {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, 0)
-            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(riqi()))
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, 0)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 0)
             this.e.reply('初始化好感度'+typeof(trainriqi)+!favorability+!trainriqi+ !cishu)
         }
-        let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
-        let trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
-        let  cishu= Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
+        favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
+        trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
+        cishu= Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
         if (trainriqi = Number(riqi()) && cishu < 3) {
 
@@ -61,17 +61,15 @@ export class train extends plugin {
             this.e.reply("fnc1")
 
         }
-        else if (Number(trainriqi) != Number(riqi())) {
-
+        else if (trainriqi != Number(riqi())) {
             this.training(favorability, cishu, value, a, b)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 1)
-            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(riqi()))
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, riqi())
             this.e.reply('func2'+cishu+trainriqi)
 
             let tt=riqi()
             this.e.reply(typeof( tt)+tt)
-            this.e.reply(typeof( trainriqi)+trainriqi)
-
+            this.e.reply(typeof( trainriqi)+trainriqi+cishu)
 
         }
         else {
