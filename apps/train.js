@@ -8,7 +8,7 @@ export class train extends plugin {
             priority: 5000,
             rule: [
                 {
-                    reg: "训练",
+                    reg: "^训练$",
                     fnc: "train",
                 },
             ],
@@ -22,7 +22,7 @@ export class train extends plugin {
         return da
 
     }
-    async training(favorability,cishu,value,a,b) {
+    async training(favorability, cishu, value, a, b) {
         favorability += value
         cishu += 1
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
@@ -45,23 +45,24 @@ export class train extends plugin {
         let cishu = await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`)
         if (!favorability || !trainriqi || !cishu) {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, 0)
-            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, String(this.riqi()))
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(this.riqi()))
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 0)
         }
         favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
-        if (trainriqi = this.riqi() && cishu < 5) {
+        if (trainriqi = Number(this.riqi()) && cishu < 3) {
 
-            this.training(favorability,cishu,value,a,b)
+            this.training(favorability, cishu, value, a, b)
             // this.e.reply("fnc1")
 
         }
-        else if (String(trainriqi) != String(this.riqi() )) {
-           
-            this.training(favorability,cishu,value,a,b)
-            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, String(this.riqi()))
+        else if (trainriqi != Number(this.riqi())) {
+
+            this.training(favorability, cishu, value, a, b)
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 1)
+            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(this.riqi()))
             // this.e.reply('func2')
 
         }
@@ -71,13 +72,11 @@ export class train extends plugin {
 
     }
     async train(e) {
-        // let groupmembermap = await e.group.getMemberMap()
-        // let operator = groupmembermap.get(e.operator_id)
-        // let target = groupmembermap.get(e.target_id)
+
         let a = "优菈"
         let b = e.nickname    // 获取发消息人的昵称
-        let value = -2 // 好感度改变值
-        value += Math.ceil(Math.random() * 6)
+        let value = -1 // 好感度改变值
+        value += Math.ceil(Math.random() * 4)
         await this.changeFavorability(a, b, value)
 
     }
