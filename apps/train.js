@@ -36,7 +36,7 @@ export class train extends plugin {
         let favorability = await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
         let cishu = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
-        if (favorability) {
+        if (!favorability) {
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, 0)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, 0)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, 0)
@@ -45,7 +45,7 @@ export class train extends plugin {
         riqi = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
         cishu = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
         if (riqi = nowday() && cishu < 3) {
-            this.reply("成功0"+riqi+nowday())
+            // this.reply("成功0"+riqi+nowday())
 
 
             favorability += value
@@ -79,7 +79,7 @@ export class train extends plugin {
             }
         }
         else if (riqi != nowday() && cishu > 2) {
-            this.reply("成功"+riqi)
+            // this.reply("成功"+riqi)
 
 
             
