@@ -1,4 +1,13 @@
-import plugin from '../../../lib/plugins/plugin.js'
+import plugin from '../../../lib/plugins/plugin.js';
+
+function riqi() {
+    // console.info(d)
+    var nowtime = new Date()
+    let da = nowtime.getDate()
+    // let da=d.toString()
+    return da
+}
+
 export class train extends plugin {
     constructor() {
         super({
@@ -14,14 +23,7 @@ export class train extends plugin {
             ],
         });
     }
-    async riqi() {
-        // console.info(d)
-        var nowtime = new Date()
-        let da = nowtime.getDate()
-        // let da=d.toString()
-        return da
-
-    }
+   
     async training(favorability, cishu, value, a, b) {
         favorability += value
         cishu += 1
@@ -64,7 +66,7 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 1)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(this.riqi()))
             this.e.reply('func2'+cishu+trainriqi)
-            let tt=this.riqi()
+            let tt=riqi()
             this.e.reply(typeof( tt)+tt)
 
 
