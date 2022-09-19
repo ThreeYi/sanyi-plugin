@@ -16,7 +16,7 @@ export class train extends plugin {
             name: "训练",
             dsc: "通过训练增加好感度",
             event: "message",
-            priority: 5000,
+            priority: 3000,
             rule: [
                 {
                     reg: "^训练$",
@@ -66,13 +66,13 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, cishu)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, nowday())
             if (value > 0) {
-                this.reply(`恭喜！\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
+                this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
             }
             else if (value < 0) {
-                this.reply(`很遗憾！\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
+                this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
             }
             else {
-                this.reply(`挺好的！\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
+                this.reply(`训练的还行\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
         else {
