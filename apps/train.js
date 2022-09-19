@@ -27,7 +27,7 @@ export class train extends plugin {
         cishu += 1
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, cishu)
-        await this.e.reply(cishu)
+        await this.e.reply(String(cishu))
         if (value > 0) {
             await this.reply(`训练很卖力呢，恭喜！\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
         }
