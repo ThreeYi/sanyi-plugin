@@ -58,9 +58,10 @@ export class train extends plugin {
             this.e.reply("fnc1")
 
         }
-        else if (trainriqi != this.riqi() ) {
-            await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, String(this.riqi()))
+        else if (String(trainriqi) != String(this.riqi() )) {
+           
             this.training(favorability,cishu,value,a,b)
+    
             this.e.reply('func2')
 
         }

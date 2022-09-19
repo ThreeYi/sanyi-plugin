@@ -98,7 +98,7 @@ export class jinyong extends plugin {
                 if (!await redis.get(`Yz:sanyi:jinyonggroup:${e.group_id}`)) {
                     /** 如果没有下班 */
                     await redis.set(`Yz:sanyi:jinyonggroup:${e.group_id}`, '1')
-                    e.reply(`${botname}下班咯~去找安博玩啦~`)
+                    e.reply(`${botname}下班咯~去找安柏玩啦~`)
                     return
                 }
             }
