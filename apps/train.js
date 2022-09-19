@@ -52,12 +52,12 @@ export class train extends plugin {
         trainriqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:trainriqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
 
-        if ((trainriqi = this.riqi()) & cishu < 5) {
+        if ((trainriqi = this.riqi()) && cishu < 5) {
 
             this.training(favorability,cishu,value,a,b)
 
         }
-        else if (trainriqi != this.riqi()) {
+        else if (trainriqi != this.riqi() ) {
 
             this.training(favorability,cishu,value,a,b)
 
