@@ -19,7 +19,7 @@ export class te extends plugin {
 
 
   async yuyin(e) {
-    console.info(nowtime.getDate)
+    console.info(d)
 
     // e.reply(d)
 
