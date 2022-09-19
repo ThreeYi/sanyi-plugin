@@ -36,7 +36,7 @@ export class train extends plugin {
         let favorability = await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
         let cishu = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
-        if (!favorability) {
+        if (favorability) {
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, 0)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, 0)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, 0)
