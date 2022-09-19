@@ -18,7 +18,9 @@ export class te extends plugin {
 
   async yuyin(e) {
 
-   let pwd=process.cwd()
+    let a=new Date()
+    pwd=a.getDate()
+
     e.reply(pwd)
 
   }
