@@ -22,7 +22,7 @@ export class train extends plugin {
         return da
 
     }
-    async training(favorability,cishu,value) {
+    async training(favorability,cishu,value,a,b) {
         favorability += value
         cishu += 1
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
@@ -53,12 +53,12 @@ export class train extends plugin {
 
         if ((trainriqi = this.riqi()) & cishu < 5) {
 
-            this.training(favorability,cishu,value)
+            this.training(favorability,cishu,value,a,b)
 
         }
         else if (trainriqi != this.riqi()) {
 
-            this.training(favorability,cishu,value)
+            this.training(favorability,cishu,value,a,b)
 
         }
         else {
