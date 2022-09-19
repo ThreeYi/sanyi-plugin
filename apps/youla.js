@@ -1,7 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
 
-let yunyin_path = '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/yuyin/'
+let yunyin_path = './/plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
     constructor() {
         super({
