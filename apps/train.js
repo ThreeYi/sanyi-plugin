@@ -66,8 +66,10 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, 1)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:trainriqi`, Number(riqi()))
             this.e.reply('func2'+cishu+trainriqi)
+
             let tt=riqi()
             this.e.reply(typeof( tt)+tt)
+            this.e.reply(typeof( trainriqi)+trainriqi)
 
 
         }
