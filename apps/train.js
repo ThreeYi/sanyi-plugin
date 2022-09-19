@@ -55,11 +55,13 @@ export class train extends plugin {
         if ((trainriqi = this.riqi()) && cishu < 5) {
 
             this.training(favorability,cishu,value,a,b)
+            this.e.reply("fnc1")
 
         }
         else if (trainriqi != this.riqi() ) {
 
             this.training(favorability,cishu,value,a,b)
+            this.e.reply('func2')
 
         }
         else {
