@@ -9,7 +9,7 @@ export class te extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: "打包测试",
+          reg: "测试",
           fnc: "yuyin",
         },
       ],
@@ -22,7 +22,7 @@ export class te extends plugin {
     var nowtime = new Date()
     let d = nowtime.getDate()
     let da=d.toString()
-     e.reply(da)
+    await  e.reply(da)
 
   }
 }
