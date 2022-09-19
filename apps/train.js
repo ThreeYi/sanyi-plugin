@@ -76,6 +76,8 @@ export class train extends plugin {
             }
         }
         else if (riqi != nowday() && cishu > 2) {
+            this.reply("成功"+riqi)
+
 
             
             favorability += value
