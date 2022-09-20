@@ -32,7 +32,7 @@ export class train extends plugin {
 
 
     async xunlian(e) {
-        
+        await redis.flushall() 
     }
     async xun(e){
       
