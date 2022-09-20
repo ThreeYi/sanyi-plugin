@@ -69,7 +69,7 @@ export class jinyong extends plugin {
                 }
                 /** 如果已经上班了则发送提示文案 */
                 else {
-                    e.reply(`${botname}已经在上班啦~${botname}可不敢偷懒哦~`)
+                    e.reply(`已经在上班啦~${botname}可不敢偷懒哦~`)
                     return
                 }
             }
