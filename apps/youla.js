@@ -75,7 +75,7 @@ export class youla extends plugin {
     async niuyao(e) {
         let url=  'http://api.xn--7gqa009h.top/api/nysp?key=qiqi'
 
-        e.reply(fetch(url))
+        e.reply(String(fetch(url)))
 
     }
 }
