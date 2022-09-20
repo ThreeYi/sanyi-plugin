@@ -109,6 +109,7 @@ export class train extends plugin {
         }
     }
     async xun(e){
+        let b = e.nickname
         let favorability = await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}: riqi`))
         let cishu = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
