@@ -101,7 +101,7 @@ export class train extends plugin {
         let b=e.nickname
         let value = -1
         value += Math.ceil(Math.random() * 5)
-        this.changeFavorability(a,b)
+        this.changeFavorability(a,b,value)
         // e.reply(nowday())
       
 }
