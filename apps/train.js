@@ -39,7 +39,7 @@ export class train extends plugin {
         
     }
     async delh(e) {
-        await redis.flushadb()
+        await client.flushadb()
         e.reply("已删除")
     }
     async changeFavorability(a, b, value) {
