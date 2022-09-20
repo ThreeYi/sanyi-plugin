@@ -34,7 +34,7 @@ export class train extends plugin {
         value += Math.floor(Math.random()*5)
 
         let favorability = await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
-        let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
+        let riqi = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}: riqi`))
         let cishu = (await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
         if (!favorability) {
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, 0)
@@ -78,16 +78,14 @@ export class train extends plugin {
                 this.reply(`训练的还行\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
-        else if (riqi != nowday() && cishu > 2) {
+        else if (riqi != nowday() && cishu > 2 && (typeof riqi == 'number')) {
             // this.reply("成功"+riqi)
 
-
-            
             favorability += value
             
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:favorability`, favorability)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:cishu`, 0)
-            await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, nowday())
+            await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, Number(nowday()))
             if (value > 0) {
                 this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
             }
@@ -97,6 +95,10 @@ export class train extends plugin {
             else {
                 this.reply(`训练的还行\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
+        }
+        else if(typeof riqi != 'number'){
+
+            await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, Number(nowday()))
         }
         else {
             var haogan= await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
