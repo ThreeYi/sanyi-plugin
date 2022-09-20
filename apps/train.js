@@ -7,7 +7,7 @@ function nowday() {
     var nowtime = new Date()
     var timeday = nowtime.getDate()
 
-    return timeday
+    return String(timeday)
 }
 
 export class train extends plugin {
@@ -32,9 +32,11 @@ export class train extends plugin {
 
 
     async xunlian(e) {
-        await redis.flushall() 
+        
     }
     async xun(e){
+
+        e.reply(nowday())
       
 }
 }
