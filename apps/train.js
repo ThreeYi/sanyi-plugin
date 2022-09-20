@@ -75,7 +75,7 @@ export class train extends plugin {
             }
         }
         else if( String(riqi) != nowday()) {
-            cishu =0
+            cishu =1
             favorability += value
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, String(cishu))
@@ -100,7 +100,7 @@ export class train extends plugin {
     async xun(e){
         let b=e.nickname
         let value = -1
-        value += Math.ceil(Math.random() * 5)
+        value += Math.ceil(Math.random() * 4)
         this.changeFavorability(a,b,value)
         // e.reply(nowday())
       
