@@ -100,6 +100,7 @@ export class train extends plugin {
             }
         }
         else if(typeof riqi != 'number'){
+            let haogan= await redis.get(`Yz:sanyi0:favorability:${a}:${b}:favorability`)
             await redis.set(`Yz:sanyi0:favorability:${a}:${b}:riqi`, Number(nowday()))
             this.reply(`@${b}\n今天已经训练好久了，休息一下明天再来吧!当前好感度`+haogan)
         }
