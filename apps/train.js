@@ -26,22 +26,15 @@ export class train extends plugin {
                     reg: "^训练测试$",
                     fnc: "xun",
                 },
-                {
-                    reg: "删除好感$",
-                    fnc: "delh",
-                },
             ],
         });
     }
 
 
-    async xunlian(e) {
+    async xun(e) {
         
     }
-    async delh(e) {
-        await client.flushadb()
-        e.reply("已删除")
-    }
+   
     async changeFavorability(a, b, value) {
         // 先获取 甲 对 乙 的好感度
         let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
@@ -55,8 +48,8 @@ export class train extends plugin {
         favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         riqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
-        this.reply(String( favorability))
-        this.reply(String(cishu))
+        // this.reply(String( favorability))
+        // this.reply(String(cishu))
         
         if ( String(riqi)==nowday() && cishu < 3 ){
             // favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
@@ -97,7 +90,7 @@ export class train extends plugin {
        
         
     }
-    async xun(e){
+    async xunlian(e){
         let b=e.nickname
         let value = -1
         value += Math.ceil(Math.random() * 4)
