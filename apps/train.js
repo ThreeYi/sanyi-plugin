@@ -89,7 +89,7 @@ export class train extends plugin {
         }
 
         else {
-            this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧`)
+            this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧!当前好感度:${favorability}`)
         }
        
         
