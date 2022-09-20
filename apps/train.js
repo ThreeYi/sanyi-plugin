@@ -87,7 +87,7 @@ export class train extends plugin {
         
     }
     async xun(e){
-        b=e.nickname
+        let b=e.nickname
         value = -1
         value += Math.ceil(Math.random() * 5)
         this.changeFavorability(a,b)
