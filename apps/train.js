@@ -26,6 +26,10 @@ export class train extends plugin {
                     reg: "^训练测试$",
                     fnc: "xun",
                 },
+                {
+                    reg: "删除好感$",
+                    fnc: "delh",
+                },
             ],
         });
     }
@@ -33,6 +37,10 @@ export class train extends plugin {
 
     async xunlian(e) {
         
+    }
+    async delh(e) {
+        await redis.flushall()
+        e.reply("已删除")
     }
     async changeFavorability(a, b, value) {
         // 先获取 甲 对 乙 的好感度
@@ -81,7 +89,7 @@ export class train extends plugin {
         }
 
         else {
-            e.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧`)
+            this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧`)
         }
        
         
