@@ -76,7 +76,7 @@ export class youla extends plugin {
     
         let niuyaolianjie = await fetch( 'http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
         let b =await niuyaolianjie.text()
-        e.reply(b)
+        e.reply(`@${e.nickname}你要的东西来了`+b)
 
     }
 }
