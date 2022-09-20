@@ -118,7 +118,7 @@ export class train extends plugin {
         riqi = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:riqi`))
         riqi =Number(riqi)
         cishu = Number(await redis.get(`Yz:sanyi0:favorability:${a}:${b}:cishu`))
-        e.reply(favorability+riqi+cishu)
+        e.reply(riqi)
     }
 }
 
