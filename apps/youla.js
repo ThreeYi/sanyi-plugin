@@ -34,6 +34,10 @@ export class youla extends plugin {
                     reg: "摸摸",
                     fnc: 'momo',
                 },
+                {
+                    reg: "扭腰",
+                    fnc: 'niuyao',
+                },
             ],
         });
     }
@@ -65,6 +69,12 @@ export class youla extends plugin {
     }
     async momo(e) {
         e.reply('你在做什么.....这...可是很失礼的')
+
+    }
+    async niuyao(e) {
+        let url=  'http://api.xn--7gqa009h.top/api/nysp?key=qiqi'
+
+        e.reply(segment.record(url))
 
     }
 }
