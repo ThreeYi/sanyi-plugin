@@ -1,5 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
+import fetch from 'node-fetch'
 
 let yunyin_path = './/plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
@@ -74,7 +75,7 @@ export class youla extends plugin {
     async niuyao(e) {
         let url=  'http://api.xn--7gqa009h.top/api/nysp?key=qiqi'
 
-        e.reply(segment.record(url))
+        e.reply(fetch(url))
 
     }
 }
