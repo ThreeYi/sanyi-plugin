@@ -74,7 +74,7 @@ export class youla extends plugin {
     }
     async niuyao(e) {
     
-        let niuyaolianjie= await (await fetch( 'http://api.xn--7gqa009h.top/api/nysp?key=qiqi')).text()
+        let niuyaolianjie= await fetch( 'http://api.xn--7gqa009h.top/api/nysp?key=qiqi').text
         e.reply(niuyaolianjie)
 
     }
