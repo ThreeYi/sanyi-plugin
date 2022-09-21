@@ -92,7 +92,7 @@ export class train extends plugin {
     }
     async xunlian(e){
         let b=e.nickname
-        let value = -1
+        let value = 0
         value += Math.floor(Math.random() * 5)
         this.changeFavorability(a,b,value)
         // e.reply(nowday())
