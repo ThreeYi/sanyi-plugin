@@ -20,7 +20,7 @@ export class guanli extends plugin {
 
 
   async get_friend(e) {
-    let f=e.fl()
+    let f=e.fl
 
     e.reply(typeof f)
 
