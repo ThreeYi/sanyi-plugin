@@ -20,10 +20,10 @@ export class guanli extends plugin {
 
 
   async get_friend(e) {
-    let f=e.fl
-    let le=f.length
+    let f=get(e.fl).number
+    // let le=f.length
 
-    e.reply(String(le))
+    e.reply(String(f))
 
 
   }
