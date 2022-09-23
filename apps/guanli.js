@@ -21,9 +21,9 @@ export class guanli extends plugin {
 
   async get_friend(e) {
     let f=e.fl
-    let dd =f.get(number)
+    let le=f.length
 
-    e.reply(typeof dd)
+    e.reply(String(le))
 
 
   }
