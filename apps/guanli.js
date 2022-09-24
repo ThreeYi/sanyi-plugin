@@ -1,5 +1,15 @@
 import plugin from '../../../lib/plugins/plugin.js'
 
+
+function maptostring(map) {
+  let allstring = ''
+  for (let [key,value] of map) {
+
+     allstring=allstring.concat(value.nickname).concat(key).concat('\n')
+  }
+   return allstring
+}
+
 export class guanli extends plugin {
   constructor() {
     super({
@@ -11,20 +21,19 @@ export class guanli extends plugin {
       rule: [
         {
           reg: "^#好友列表$",
-          fnc: "get_friend",
-          permission:'master'
+          fnc: "get_friend_list",
+          permission: 'master'
         },
       ],
     });
   }
 
 
-  async get_friend(e) {
-    let f=get(e.fl).number
-    // let le=f.length
+  async get_friend_list(e) {
+    let f = Bot.fl
+    let dd = maptostring(f)
 
-    e.reply(String(f))
-
+    e.reply(dd)
 
   }
 }

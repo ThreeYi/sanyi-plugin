@@ -51,7 +51,7 @@ export class train extends plugin {
         // this.reply(String( favorability))
         // this.reply(String(cishu))
         
-        if ( String(riqi)==nowday() && cishu < 3 ){
+        if ( String(riqi)==nowday() && cishu < 2 ){
             // favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
             favorability += value
             cishu += 1
