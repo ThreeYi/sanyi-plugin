@@ -3,16 +3,16 @@ import plugin from '../../../lib/plugins/plugin.js'
 
 // map转换为字符串
 //ty=0:好友列表 ty=1：群列表
-function maptostring(map,ty) {
+function maptostring(map, ty) {
   let allstring = ''
-  if (ty==0){
+  if (ty == 0) {
     for (let [key, value] of map) {
       allstring = allstring.concat(`(${value.nickname}) ${key}\n`)
     }
   }
-  if (ty==1){
+  if (ty == 1) {
     for (let [key, value] of map) {
-      allstring = allstring.concat(`(${value.name}) ${key}\n`)
+      allstring = allstring.concat(`(${value.group_name}) ${key}\n`)
     }
   }
 
@@ -45,13 +45,13 @@ export class guanli extends plugin {
 
   async get_friend_list(e) {
     let f = Bot.fl
-    let ff = maptostring(f,0)
+    let ff = maptostring(f, 0)
     e.reply(ff)
   }
 
   async get_group_list(e) {
     let g = Bot.gl
-    let gg = maptostring(g,1)
+    let gg = maptostring(g, 1)
     e.reply(gg)
   }
 }
