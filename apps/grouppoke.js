@@ -10,7 +10,7 @@ export class grouppoke extends plugin {
             name: "戳一戳",
             dsc: "收到戳一戳消息做出回应",
             event: "notice.group.poke",
-            priority: 5000,
+            priority: 1,
             rule: [
                 {
                     reg: ".*",
