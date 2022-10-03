@@ -64,7 +64,7 @@ export class train extends plugin {
                 this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
             }
             else {
-                this.reply(`训练表现平平\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
+                this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
         else if( String(riqi) != nowday()) {
@@ -80,7 +80,7 @@ export class train extends plugin {
                 this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
             }
             else {
-                this.reply(`训练表现平平\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
+                this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
 
