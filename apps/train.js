@@ -126,7 +126,7 @@ export class train extends plugin {
             haogan: String(haogan_list)
 
         }
-        let img = await puppeteer.screenshot("123", {
+        let img = await puppeteer.screenshot("好感度", {
             ...data1,
         });
         e.reply(img)
