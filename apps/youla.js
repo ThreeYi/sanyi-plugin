@@ -1,6 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
 import fetch from 'node-fetch'
+import puppeteer from "../..//lib/puppeteer/puppeteer.js";
 
 let yunyin_path = './/plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
@@ -83,7 +84,21 @@ export class youla extends plugin {
         e.reply(`@${e.nickname}你要的东西来了`+b)
     }
     async haogan(e) {
+        let ml = process.cwd()
+        let data1={}
 
+        data1 = {
+            tplFile: './resources/haogan/2.html',
+            xvhao: '1,2,3,4,5',
+            song : 'dfds,fda,dfa,afa,adfa',
+            zuozhe : 'fdasfa,afa,adfad,afad,adf',
+            dz:  ml
+            
+          }  
+              let img = await puppeteer.screenshot("123", {
+                  ...data1,
+              });
+              e.reply(img)
         e.reply('haogan')
 
     }
