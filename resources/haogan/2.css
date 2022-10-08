@@ -135,8 +135,8 @@ table{
 	font-family:"jty";
 	padding-top:20px;
 	text-align: center;
-	font-size:15px;
+	font-size:18px;
 
 	color:#fff;
-	text-shadow:3px 3px 3px #00f;
+	text-shadow:3px 3px 3px rgb(179, 22, 35);
 }
