@@ -23,7 +23,7 @@ export class train extends plugin {
                     fnc: "xunlian",
                 },
                 {
-                    reg: "好感排行",
+                    reg: "好感查询",
                     fnc: 'haogan',
                 },
             ],
