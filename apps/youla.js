@@ -88,7 +88,7 @@ export class youla extends plugin {
         let data1={}
 
         data1 = {
-            tplFile: './resources/haogan/2.html',
+            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.html',
             xvhao: '1,2,3,4,5',
             song : 'dfds,fda,dfa,afa,adfa',
             zuozhe : 'fdasfa,afa,adfad,afad,adf',
