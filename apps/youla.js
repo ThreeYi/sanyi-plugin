@@ -1,7 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
 import fetch from 'node-fetch'
-import puppeteer from "../..//lib/puppeteer/puppeteer.js";
+import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 
 let yunyin_path = './/plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
