@@ -1,5 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js'
-
+import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 
 let a = '优菈'
 
