@@ -1,48 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.css" />
 </head>
-<body> 
-	<div class="bt" >好感度排行</div>
-	
-	
-	<script type="text/javascript">
 
-var i=0
+<body>
+    <div class="bt">好感度排行</div>
 
 
-var xvhao = "{{xvhao}}"   // 1，2，3，4，5，6
-// 使用split方法将字符串转为列表
-var arrList = xvhao.split(",");     // ['1','2','3','4','5','6']
+    <script type="text/javascript">
 
-var song = "{{song}}"   // 1，2，3，4，5，6
-// 使用split方法将字符串转为列表
-var arrList2 = song.split(",");     // ['1','2','3','4','5','6']
-var zuozhe = "{{zuozhe}}"   // 1，2，3，4，5，6
-// 使用split方法将字符串转为列表
-var arrList3 = zuozhe.split(",");     // ['1','2','3','4','5','6']
- document.write('<table border="1" ' )
- 
- document.write("<tr>" + "<td>" + "排名" + "</td>" + "<td>" + "昵称" + "</td>" + "<td>" + "好感"+ "</td>" + "</tr>")
-for (i=0;i<=arrList.length-2;i++)
-{
-let nr ="<tr>" + "<td>" + arrList[i] + "</td>" + "<td>" + arrList2[i] + "</td>" + "<td>" + arrList3[i] + "</td>" + "</tr>"
- if(i%2==0){
-            document.write(nr )
-        }else{
-           document.write(nr)
-    }
-}
+        var i = 0
 
-document.write('</table>' )
-</script>
+        var haogan = "{{haogan}}"   // 1，2，3，4，5，6
+
+        haogan = haogan.split(',')
+
+        document.write('<table border="1" ')
+        //  console.log(haogan)
+        document.write("<tr>" + "<td>" + "排名" + "</td>" + "<td>" + "昵称" + "</td>" + "<td>" + "好感" + "</td>" + "</tr>")
+        for (i = 0; i <= haogan.length / 2 - 1; i++) {
+            let nr = "<tr>" + "<td>" + (i + 1) + "</td>" + "<td>" + haogan[i * 2] + "</td>" + "<td>" + haogan[i * 2 + 1] + "</td>" + "</tr>"
+            if (i % 2 == 0) {
+                document.write(nr)
+            } else {
+                document.write(nr)
+            }
+        }
+
+        document.write('</table>')
+    </script>
 
 
-<p class="lb" >可以通过训练增加好感度</p>
-<div class="jw" >creat    by   sanyi-plugin</div>
+    <p class="lb">可以通过训练增加好感度</p>
+    <div class="jw">creat by sanyi-plugin</div>
 
 
 </body>
+
 </html>

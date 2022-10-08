@@ -40,10 +40,7 @@ export class youla extends plugin {
                     reg: "扭腰",
                     fnc: 'niuyao',
                 },
-                {
-                    reg: "好感排行",
-                    fnc: 'haogan',
-                },
+
             ],
         });
     }
@@ -78,28 +75,9 @@ export class youla extends plugin {
 
     }
     async niuyao(e) {
-    
-        let niuyaolianjie = await fetch( 'http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
-        let b =await niuyaolianjie.text()
-        e.reply(`@${e.nickname}你要的东西来了`+b)
-    }
-    async haogan(e) {
-        let ml = process.cwd()
-        let data1={}
 
-        data1 = {
-            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.html',
-            xvhao: '1,2,3,4,5',
-            song : 'dfds,fda,dfa,afa,adfa',
-            zuozhe : 'fdasfa,afa,adfad,afad,adf',
-            dz:  ml
-            
-          }  
-              let img = await puppeteer.screenshot("123", {
-                  ...data1,
-              });
-              e.reply(img)
-        e.reply('haogan')
-
+        let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
+        let b = await niuyaolianjie.text()
+        e.reply(`@${e.nickname}你要的东西来了` + b)
     }
 }

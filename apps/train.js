@@ -23,18 +23,16 @@ export class train extends plugin {
                     fnc: "xunlian",
                 },
                 {
-                    reg: "^训练测试$",
-                    fnc: "xun",
+                    reg: "好感排行",
+                    fnc: 'haogan',
                 },
             ],
         });
     }
 
 
-    async xun(e) {
-        
-    }
-   
+
+
     async changeFavorability(a, b, value) {
         // 先获取 甲 对 乙 的好感度
         let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
@@ -50,8 +48,8 @@ export class train extends plugin {
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
         // this.reply(String( favorability))
         // this.reply(String(cishu))
-        
-        if ( String(riqi)==nowday() && cishu < 1 ){
+
+        if (String(riqi) == nowday() && cishu < 1) {
             // favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
             favorability += value
             cishu += 1
@@ -67,8 +65,8 @@ export class train extends plugin {
                 this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         }
-        else if( String(riqi) != nowday()) {
-            cishu =1
+        else if (String(riqi) != nowday()) {
+            cishu = 1
             favorability += value
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, String(cishu))
@@ -87,15 +85,52 @@ export class train extends plugin {
         else {
             this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧!当前好感度:${favorability}`)
         }
-       
-        
+
+
     }
-    async xunlian(e){
-        let b=e.nickname
+    async xunlian(e) {
+        let b = e.nickname
         let value = 0
         value += Math.floor(Math.random() * 4)
-        this.changeFavorability(a,b,value)
+        this.changeFavorability(a, b, value)
         // e.reply(nowday())
-      
-}
+
+    }
+    async haogan(e) {
+
+        let favorability = await redis.keys('Yz:sanyi:favorability:优菈:*:favorability')
+        favorability = String(favorability)
+        favorability = favorability.replace(RegExp("Yz:sanyi:favorability:优菈:", "g"), '')
+        favorability = favorability.replace(RegExp(":favorability", 'g'), '')
+        let name_list = favorability.split(',')
+        let haogan_list = []
+        for (let name in name_list) {
+            let haogan = await redis.get(`Yz:sanyi:favorability:优菈:${name_list[name]}:favorability`)
+            haogan_list.push([name_list[name], haogan])
+        }
+        // console.log(haogan_list)
+
+        for (let i = 0; i < haogan_list.length - 1; i++) {//代表第几轮比较
+            for (let j = 0; j < haogan_list.length - 1 - i; j++) {//每一轮的两两相邻元素比较
+                if (Number(haogan_list[j][1]) < Number(haogan_list[j + 1][1])) {//相邻元素比较
+                    [haogan_list[j], haogan_list[j + 1]] = [haogan_list[j + 1], haogan_list[j]]//满足条件，交换位置
+                }
+            }
+        }
+        // console.log(haogan_list)
+        // let ml = process.cwd()
+        let data1 = {}
+
+        data1 = {
+            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.html',
+            haogan: String(haogan_list)
+
+        }
+        let img = await puppeteer.screenshot("123", {
+            ...data1,
+        });
+        e.reply(img)
+        // e.reply('haogan')
+
+    }
 }
