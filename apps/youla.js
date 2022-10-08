@@ -39,6 +39,10 @@ export class youla extends plugin {
                     reg: "扭腰",
                     fnc: 'niuyao',
                 },
+                {
+                    reg: "好感排行",
+                    fnc: 'haogan',
+                },
             ],
         });
     }
@@ -77,6 +81,10 @@ export class youla extends plugin {
         let niuyaolianjie = await fetch( 'http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
         let b =await niuyaolianjie.text()
         e.reply(`@${e.nickname}你要的东西来了`+b)
+    }
+    async haogan(e) {
+
+        e.reply('haogan')
 
     }
 }
