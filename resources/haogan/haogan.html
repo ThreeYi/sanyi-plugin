@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.css" />
+    <link rel="stylesheet" type="text/css" href="/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/haogan.css" />
 </head>
 
 <body>
@@ -14,11 +14,11 @@
         var i = 0
         var haogan = "{{haogan}}"
         var haogan_list = haogan.split(',')
-
+        document.write('<table border="1" ')
 
         document.write("<tr>" + "<td>" + "序号" + "</td>" + "<td>" + "昵称" + "</td>" + "<td>" + "好感" + "</td>" + "</tr>")
         for (i = 0; i <= (haogan_list.length / 2 - 1); i++) {
-            let nr = "<tr>" + "<td>" + i + "</td>" + "<td>" + haogan_list[i * 2] + "</td>" + "<td>" + haogan_list[(i * 2 + 1)] + "</td>" + "</tr>"
+            let nr = "<tr>" + "<td>" + (i + 1) + "</td>" + "<td>" + haogan_list[i * 2] + "</td>" + "<td>" + haogan_list[(i * 2 + 1)] + "</td>" + "</tr>"
             if (i % 2 == 0) {
 
 
@@ -31,8 +31,7 @@
         document.write('</table>')
     </script>
 
-
-    <p class="lb">你可以发送#听+数字来选择歌曲，例如#听1</p>
+    <p class="lb">可以通过训练提升好感度</p>
     <div class="jw">creat by sanyi-plugin</div>
 
 

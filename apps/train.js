@@ -114,7 +114,7 @@ export class train extends plugin {
         let data1 = {}
 
         data1 = {
-            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/2.html',
+            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/haogan.html',
             haogan: String(haogan_list)
 
         }
