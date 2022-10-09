@@ -1,0 +1,73 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+div {
+    text-align: center;
+}
+
+.bt {
+    width: 60%;
+    height: 50px;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 22px;
+    text-align: left;
+    float: left;
+}
+
+.haoyou {
+    background: #ffffff;
+    margin: auto;
+    margin-top: 2px;
+    width: 60%;
+    height: 50px;
+    /* display: flex; */
+}
+
+.item {
+    background: #c5dede;
+    margin: auto;
+    margin-top: 2px;
+    width: 60%;
+    height: 50px;
+    display: flex;
+}
+
+.item img {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-top: 3px;
+    float: left;
+    border-radius: 50px;
+}
+
+.des {
+    float: left;
+    margin-left: 5px;
+    margin-top: 3px;
+    text-align: left;
+}
+
+.name {
+    float: top;
+    font-size: 18px;
+    text-align: left;
+}
+
+.sign {
+    float: top;
+    font-size: 13px;
+    text-align: left;
+}
+
+.jw {
+    margin: 0;
+    margin-top: 20px;
+    text-align: center;
+    float: bottom;
+}

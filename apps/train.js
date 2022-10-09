@@ -25,11 +25,11 @@ export class train extends plugin {
                     reg: "好感查询",
                     fnc: 'haogan',
                 },
-                {
-                    reg: "^恢复|",
-                    fnc: "huifu",
-                    permission: 'master'
-                },
+                // {
+                //     reg: "^恢复|",
+                //     fnc: "huifu",
+                //     permission: 'master'
+                // },
             ],
         });
     }
