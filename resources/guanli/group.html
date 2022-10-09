@@ -15,9 +15,8 @@
         var allnum = "{{allnum}}"
         var num_list = allnum.split(',')
         document.write('<div class="haoyou"><div class="bt">群列表' + (group_list.length - 1) + '</div> </div>')
-        for (let i = 0; i < +group_list.length - 1; i++) {
-            document.write('<div class="item"><img src=https://p.qlogo.cn/gh/' + num_list[i] + '/' + num_list[i] + '/0' + key_list[i] + '" alt=""><div class="name">' + group_list[i] + '</div></div>')
-
+        for (let j = 0; j < +group_list.length - 1; j++) {
+            document.write('<div class="item"><img src=https://p.qlogo.cn/gh/' + num_list[j] + '/' + num_list[j] + '/0 "alt=""><div class="name">' + group_list[j] + '</div></div>')
         }
     </script>
 

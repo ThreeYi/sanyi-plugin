@@ -1,23 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 
-// map转换为字符串
-//ty=0:好友列表 ty=1：群列表
-function maptostring(map, ty) {
-    let allstring = ''
-    if (ty == 0) {
-        for (let [key, value] of map) {
-            allstring = allstring.concat(`(${value.nickname}) ${key}\n`)
-        }
-    }
-    if (ty == 1) {
-        for (let [key, value] of map) {
-            allstring = allstring.concat(`(${value.group_name}) ${key}\n`)
-        }
-    }
 
-    return allstring
-}
 
 export class guanli extends plugin {
     constructor() {
@@ -72,7 +56,24 @@ export class guanli extends plugin {
 
     async get_group_list(e) {
         let g = Bot.gl
-        let gg = maptostring(g, 1)
-        e.reply(gg)
+        let allgroup = ''
+        let allnum = ''
+        for (let [key, value] of g) {
+            allgroup = allgroup.concat(`${value.group_name}(${key}),`)
+            allnum = allnum.concat(`${key},`)
+
+        }
+        let data1 = {}
+
+        data1 = {
+            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/guanli/group.html',
+            allnum: allnum,
+            allgroup: allgroup,
+
+        }
+        let img = await puppeteer.screenshot("群列表", {
+            ...data1,
+        });
+        e.reply(img)
     }
 }

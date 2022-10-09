@@ -14,7 +14,7 @@ div {
     height: 50px;
     margin: auto;
     margin-top: 20px;
-    font-size: 22px;
+    font-size: 30px;
     text-align: left;
     float: left;
 }
@@ -48,7 +48,9 @@ div {
 
 .name {
     float: top;
-    font-size: 26px;
+    margin-top: 3px;
+    margin-left: 5px;
+    font-size: 30px;
     text-align: left;
 }
 
