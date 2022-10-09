@@ -23,45 +23,32 @@ div {
     background: #ffffff;
     margin: auto;
     margin-top: 2px;
-    width: 60%;
+    width: 80%;
     height: 50px;
     /* display: flex; */
 }
 
 .item {
-    background: #c5dede;
+    background: #ffffff;
     margin: auto;
     margin-top: 2px;
-    width: 60%;
-    height: 50px;
+    width: 80%;
+    height: 70px;
     display: flex;
 }
 
 .item img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     margin-left: 5px;
     margin-top: 3px;
     float: left;
     border-radius: 50px;
 }
 
-.des {
-    float: left;
-    margin-left: 5px;
-    margin-top: 3px;
-    text-align: left;
-}
-
 .name {
     float: top;
-    font-size: 18px;
-    text-align: left;
-}
-
-.sign {
-    float: top;
-    font-size: 13px;
+    font-size: 26px;
     text-align: left;
 }
 

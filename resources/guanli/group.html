@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/root/Yunzai-Bot/plugins/sanyi-plugin/resources/guanli/group.css" />
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+        var allgroup = "{{allgroup}}"
+        var group_list = allgroup.split(',')
+        var allnum = "{{allnum}}"
+        var num_list = allnum.split(',')
+        document.write('<div class="haoyou"><div class="bt">群列表' + (group_list.length - 1) + '</div> </div>')
+        for (let i = 0; i < +group_list.length - 1; i++) {
+            document.write('<div class="item"><img src=https://p.qlogo.cn/gh/' + num_list[i] + '/' + num_list[i] + '/0' + key_list[i] + '" alt=""><div class="name">' + group_list[i] + '</div></div>')
+
+        }
+    </script>
+
+
+    <div class="jw">creat by sanyi-plugin</div>
+
+
+</body>
+
+</html>
