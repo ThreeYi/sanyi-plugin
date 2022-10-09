@@ -17,14 +17,18 @@ export class train extends plugin {
             dsc: "通过训练增加好感度",
             event: "message",
             priority: 3000,
-            rule: [
-                {
+            rule: [{
                     reg: "^训练$",
                     fnc: "xunlian",
                 },
                 {
                     reg: "好感查询",
                     fnc: 'haogan',
+                },
+                {
+                    reg: "^恢复|",
+                    fnc: "huifu",
+                    permission: 'master'
                 },
             ],
         });
@@ -46,8 +50,8 @@ export class train extends plugin {
         favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         riqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
-        // this.reply(String( favorability))
-        // this.reply(String(cishu))
+            // this.reply(String( favorability))
+            // this.reply(String(cishu))
 
         if (String(riqi) == nowday() && cishu < 1) {
             // favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
@@ -57,15 +61,12 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, String(cishu))
             if (value > 0) {
                 this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
-            }
-            else if (value < 0) {
+            } else if (value < 0) {
                 this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
-            }
-            else {
+            } else {
                 this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
-        }
-        else if (String(riqi) != nowday()) {
+        } else if (String(riqi) != nowday()) {
             cishu = 1
             favorability += value
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
@@ -73,16 +74,12 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:riqi`, nowday())
             if (value > 0) {
                 this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
-            }
-            else if (value < 0) {
+            } else if (value < 0) {
                 this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
-            }
-            else {
+            } else {
                 this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
-        }
-
-        else {
+        } else {
             this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧!当前好感度:${favorability}`)
         }
 
@@ -93,7 +90,7 @@ export class train extends plugin {
         let value = 0
         value += Math.floor(Math.random() * 4)
         this.changeFavorability(a, b, value)
-        // e.reply(nowday())
+            // e.reply(nowday())
 
     }
     async haogan(e) {
@@ -110,10 +107,10 @@ export class train extends plugin {
         }
         // console.log(haogan_list)
 
-        for (let i = 0; i < haogan_list.length - 1; i++) {//代表第几轮比较
-            for (let j = 0; j < haogan_list.length - 1 - i; j++) {//每一轮的两两相邻元素比较
-                if (Number(haogan_list[j][1]) < Number(haogan_list[j + 1][1])) {//相邻元素比较
-                    [haogan_list[j], haogan_list[j + 1]] = [haogan_list[j + 1], haogan_list[j]]//满足条件，交换位置
+        for (let i = 0; i < haogan_list.length - 1; i++) { //代表第几轮比较
+            for (let j = 0; j < haogan_list.length - 1 - i; j++) { //每一轮的两两相邻元素比较
+                if (Number(haogan_list[j][1]) < Number(haogan_list[j + 1][1])) { //相邻元素比较
+                    [haogan_list[j], haogan_list[j + 1]] = [haogan_list[j + 1], haogan_list[j]] //满足条件，交换位置
                 }
             }
         }
@@ -130,7 +127,23 @@ export class train extends plugin {
             ...data1,
         });
         e.reply(img)
-        // e.reply('haogan')
+            // e.reply('haogan')
+
+    }
+    async huifu(e) {
+        let xiaoxi = e.msg
+        let shuju = xiaoxi.split('|')
+        let favorability = shuju[2]
+        let b = shuju[1]
+        let cishu = '0'
+        let riqi = '0'
+            // let value = 0
+            // value += Math.floor(Math.random() * 4)
+            // this.changeFavorability(a, b, value)
+        await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
+        await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, cishu)
+        await redis.set(`Yz:sanyi:favorability:${a}:${b}:riqi`, riqi)
+        e.reply('已经恢复' + b + '好感度：' + favorability)
 
     }
 }
