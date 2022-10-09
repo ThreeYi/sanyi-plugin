@@ -7,39 +7,26 @@
 </head>
 
 <body>
-    <div class="haoyou">
-        <div class="bt">好友列表(4/6)</div>
 
-    </div>
+    <!--<div class="bt">好友列表(4/6)</div>-->
+
+
 
     <script type="text/javascript">
+        var allname = "{{allname}}"
+        var name_list = allname.split(',')
+        var allkey = "{{allkey}}"
+        var key_list = allkey.split(',')
+            // var allstatu="{{allstatu}}"
+            // var statu_list=allstatu.split(',')
+            // var sign="{{allsign}}"
+            // var sign_list=allsign.split(',')
+        document.write('<div class="haoyou"><div class="bt">好友列表' + (name_list.length - 1) + '</div> </div>')
+        for (let i = 0; i < +name_list.length - 1; i++) {
+            document.write('<div class="item"><img src=https://q1.qlogo.cn/g?b=qq&s=0&nk=' + key_list[i] + '" alt=""><div class="des"><div class="name">' + name_list[i] + '</div> <div class="sign">[在线]今天是个好奇自</div></div></div>')
+
+        }
     </script>
-
-    <div class="item">
-        <img src="3.png" alt="">
-        <div class="des">
-            <div class="name">
-                飞翔的企鹅(87438947)
-            </div>
-            <div class="sign">
-                [在线] 今天又是快乐的一天
-            </div>
-
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="3.png" alt="">
-        <div class="des">
-            <div class="name">
-                飞翔的企鹅(87438947)
-            </div>
-            <div class="sign">
-                [在线] 今天又是快乐的一天
-            </div>
-
-        </div>
-    </div>
 
 
 
