@@ -3,7 +3,7 @@ import { segment } from 'oicq'
 import fetch from 'node-fetch'
 
 
-let yunyin_path = './/plugins/sanyi-plugin/resources/yuyin/'
+let yunyin_path = './plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
     constructor() {
         super({
@@ -11,8 +11,7 @@ export class youla extends plugin {
             dsc: "收到指定消息后回复",
             event: "message",
             priority: 5000,
-            rule: [
-                {
+            rule: [{
                     reg: "早上好",
                     fnc: "zaoshanghao",
                 },

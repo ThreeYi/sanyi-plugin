@@ -1,7 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 
-let a = '优菈'
+let a = '优菈' //机器人名字
 
 function nowday() {
     var nowtime = new Date()
@@ -18,18 +18,18 @@ export class train extends plugin {
             event: "message",
             priority: 3000,
             rule: [{
-                    reg: "^训练$",
+                    reg: "^训练$", //好感度玩法触发词
                     fnc: "xunlian",
                 },
                 {
-                    reg: "好感查询",
+                    reg: "好感查询", //好感度排行
                     fnc: 'haogan',
                 },
-                // {
-                //     reg: "^恢复|",
-                //     fnc: "huifu",
-                //     permission: 'master'
-                // },
+                {
+                    reg: "^恢复", //手动调整好感度，格式： 恢复|小白|12 将小白好感度设置为15
+                    fnc: "huifu",
+                    permission: 'master'
+                },
             ],
         });
     }
@@ -38,11 +38,10 @@ export class train extends plugin {
 
 
     async changeFavorability(a, b, value) {
-        // 先获取 甲 对 乙 的好感度
         let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         let cishu = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
-        if (!favorability) {
+        if (!favorability) { //判断是否存在，不存在初始化
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, 0)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:riqi`, '0')
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, '0')
@@ -50,11 +49,9 @@ export class train extends plugin {
         favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         riqi = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         cishu = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
-            // this.reply(String( favorability))
-            // this.reply(String(cishu))
+
 
         if (String(riqi) == nowday() && cishu < 1) {
-            // favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
             favorability += value
             cishu += 1
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
@@ -90,7 +87,6 @@ export class train extends plugin {
         let value = 0
         value += Math.floor(Math.random() * 4)
         this.changeFavorability(a, b, value)
-            // e.reply(nowday())
 
     }
     async haogan(e) {
@@ -105,7 +101,7 @@ export class train extends plugin {
             let haogan = await redis.get(`Yz:sanyi:favorability:优菈:${name_list[name]}:favorability`)
             haogan_list.push([name_list[name], haogan])
         }
-        // console.log(haogan_list)
+
 
         for (let i = 0; i < haogan_list.length - 1; i++) { //代表第几轮比较
             for (let j = 0; j < haogan_list.length - 1 - i; j++) { //每一轮的两两相邻元素比较
@@ -114,8 +110,7 @@ export class train extends plugin {
                 }
             }
         }
-        // console.log(haogan_list)
-        // let ml = process.cwd()
+
         let data1 = {}
 
         data1 = {
@@ -127,7 +122,6 @@ export class train extends plugin {
             ...data1,
         });
         e.reply(img)
-            // e.reply('haogan')
 
     }
     async huifu(e) {
@@ -137,9 +131,6 @@ export class train extends plugin {
         let b = shuju[1]
         let cishu = '0'
         let riqi = '0'
-            // let value = 0
-            // value += Math.floor(Math.random() * 4)
-            // this.changeFavorability(a, b, value)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, cishu)
         await redis.set(`Yz:sanyi:favorability:${a}:${b}:riqi`, riqi)

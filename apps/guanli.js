@@ -62,10 +62,6 @@ export class guanli extends plugin {
             tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/guanli/friend.html',
             allname: allname,
             allkey: allkey,
-            // allstatu:allstatu,
-            // allsign:allsign,
-            // allsign,
-            // haogan: String(haogan_list)
 
         }
         let img = await puppeteer.screenshot("好友列表", {
