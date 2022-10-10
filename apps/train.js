@@ -112,10 +112,12 @@ export class train extends plugin {
         }
 
         let data1 = {}
+        let pl = process.cwd()
 
         data1 = {
-            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/haogan/haogan.html',
-            haogan: String(haogan_list)
+            tplFile: './plugins/sanyi-plugin/resources/haogan/haogan.html',
+            haogan: String(haogan_list),
+            pl: pl,
 
         }
         let img = await puppeteer.screenshot("好感度", {

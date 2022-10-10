@@ -33,6 +33,7 @@ export class guanli extends plugin {
         let allsign = ''
         let allstatu = ''
         let allkey = ''
+        let pl = process.cwd()
         for (let [key, value] of f) {
             allkey = allkey.concat(`${key},`)
             allname = allname.concat(`${value.nickname}(${key}),`)
@@ -43,9 +44,10 @@ export class guanli extends plugin {
         let data1 = {}
 
         data1 = {
-            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/guanli/friend.html',
+            tplFile: './plugins/sanyi-plugin/resources/guanli/friend.html',
             allname: allname,
             allkey: allkey,
+            pl: pl,
 
         }
         let img = await puppeteer.screenshot("好友列表", {
@@ -58,6 +60,7 @@ export class guanli extends plugin {
         let g = Bot.gl
         let allgroup = ''
         let allnum = ''
+        let pl = process.cwd()
         for (let [key, value] of g) {
             allgroup = allgroup.concat(`${value.group_name}(${key}),`)
             allnum = allnum.concat(`${key},`)
@@ -66,9 +69,10 @@ export class guanli extends plugin {
         let data1 = {}
 
         data1 = {
-            tplFile: '/root/Yunzai-Bot/plugins/sanyi-plugin/resources/guanli/group.html',
+            tplFile: './plugins/sanyi-plugin/resources/guanli/group.html',
             allnum: allnum,
             allgroup: allgroup,
+            pl: pl,
 
         }
         let img = await puppeteer.screenshot("群列表", {
