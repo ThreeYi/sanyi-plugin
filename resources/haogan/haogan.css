@@ -15,7 +15,8 @@
 body {
     width: 100%;
     height: 130%;
-    background: url("bg.png");
+    background: linear-gradient(#b18d4b, #c0c75c);
+    ;
     background-size: 100%;
 }
 
