@@ -19,7 +19,7 @@ export class grouppoke extends plugin {
 
 
     async grouppoke(e) {
-        let words = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/words/words.yaml", 'utf8'))
+        let words = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/grouppoke/grouppoke_words.yaml", 'utf8'))
         let wordsindex = Math.ceil(Math.random() * words.length)
         let appindex = Math.ceil(Math.random() * 2)
         if (e.target_id === cfg.qq) {

@@ -1,6 +1,11 @@
 import plugin from '../../../lib/plugins/plugin.js'
+import YAML from "yaml"
+import fs from "node:fs"
 
-let botname = '优菈'
+let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
+let botname = botinfo[bot_name]
+let starttip = botinfo[start_tip]
+let closetip = botinfo[close_tip]
 export class jinyong extends plugin {
     constructor() {
         super({
@@ -31,6 +36,7 @@ export class jinyong extends plugin {
             data[e.group_id] = { enable: ["机器人群开关", ] }
             let yaml = YAML.stringify(data)
             fs.writeFileSync(this.file, yaml, "utf8")
+            e.reply(`${botname}${closetip}`)
         } else {
             e.reply('请在群聊中使用')
         }
@@ -44,6 +50,7 @@ export class jinyong extends plugin {
             data[e.group_id] = { enable: null }
             let yaml = YAML.stringify(data)
             fs.writeFileSync(this.file, yaml, "utf8")
+            e.reply(`${botname}${starttip}`)
         } else {
             e.reply('请在群聊中使用')
         }
