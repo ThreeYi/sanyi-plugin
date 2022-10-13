@@ -19,9 +19,6 @@ export class grouppoke extends plugin {
 
 
     async grouppoke(e) {
-        if (e.isGroup && (await redis.get(`Yz:sanyi:jinyonggroup:${e.group_id}`))) {
-            return true
-        }
         let words = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/words/words.yaml", 'utf8'))
         let wordsindex = Math.ceil(Math.random() * words.length)
         let appindex = Math.ceil(Math.random() * 2)
