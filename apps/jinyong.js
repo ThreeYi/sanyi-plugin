@@ -3,9 +3,9 @@ import YAML from "yaml"
 import fs from "node:fs"
 
 let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
-let botname = botinfo[bot_name]
-let starttip = botinfo[start_tip]
-let closetip = botinfo[close_tip]
+let botname = botinfo.bot_name
+let starttip = botinfo.start_tip
+let closetip = botinfo.close_tip
 export class jinyong extends plugin {
     constructor() {
         super({
