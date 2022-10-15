@@ -1,6 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
-import fetch from 'node-fetch'
+
 
 
 let yunyin_path = './plugins/sanyi-plugin/resources/yuyin/'
