@@ -18,8 +18,12 @@ export class yule extends plugin {
                     fnc: "guzhi"
                 },
                 {
-                    reg: "扭腰",
+                    reg: "^扭腰$",
                     fnc: 'niuyao',
+                },
+                {
+                    reg: "^重置扭腰$",
+                    fnc: 'reniuyao',
                 },
             ],
         });
@@ -41,16 +45,26 @@ export class yule extends plugin {
         }
     }
     async niuyao(e) {
-
-        let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
-        let b = await niuyaolianjie.text()
-        while (b = '获取json数量错误') {
-            niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
-            b = await niuyaolianjie.text()
+        let cd = await redis.get(`Yz:sanyi:yule:niuyao:cd`)
+        if (!cd || Number(cd) == 0) {
+            let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
+            let b = await niuyaolianjie.text()
+            if (b != '获取json数量错误') {
+                e.reply(`@${e.nickname}你要的东西来了` + b)
+                await redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
+                    setTimeout(() => {
+                        redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
+                    }, 10000)
+                })
+            } else {
+                e.reply('你要的东西坐火箭去太空了，再试一遍吧')
+            }
+        } else {
+            e.reply('现在是圣贤时间，休息一下再来吧')
         }
-        if (b != '获取json数量错误') {
-            e.reply(`@${e.nickname}你要的东西来了` + b)
-        }
-
+    }
+    async reniuyao(e) {
+        await redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
+        e.reply('祭礼枪被动触发,已重置圣贤时间cd')
     }
 }
