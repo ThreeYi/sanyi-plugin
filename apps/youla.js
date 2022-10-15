@@ -28,17 +28,14 @@ export class youla extends plugin {
                     fnc: 'wanan',
                 },
                 {
-                    reg: "贴贴",
+                    reg: "优菈贴贴",
                     fnc: 'tietie',
                 },
                 {
-                    reg: "摸摸",
+                    reg: "优菈摸摸",
                     fnc: 'momo',
                 },
-                {
-                    reg: "扭腰",
-                    fnc: 'niuyao',
-                },
+
 
             ],
         });
@@ -73,10 +70,5 @@ export class youla extends plugin {
         e.reply('你在做什么.....这...可是很失礼的')
 
     }
-    async niuyao(e) {
 
-        let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
-        let b = await niuyaolianjie.text()
-        e.reply(`@${e.nickname}你要的东西来了` + b)
-    }
 }
