@@ -51,7 +51,7 @@ export class yule extends plugin {
             let b = await niuyaolianjie.text()
             if (b != '获取json数量错误') {
                 e.reply(`@${e.nickname}你要的东西来了` + b)
-                await redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
+                redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
                     setTimeout(() => {
                         redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
                     }, 10000)
