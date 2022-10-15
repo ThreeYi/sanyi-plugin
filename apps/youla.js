@@ -63,11 +63,21 @@ export class youla extends plugin {
 
     }
     async tietie(e) {
-        e.reply('离我远点，真是可耻又无礼的行为')
+        let mo = [
+            '离我远点，真是可耻又无礼的行为',
+            '贴..贴贴(靠近)'
+        ]
+        let index = Math.floor((Math.random() * mo.length));
+        e.reply(mo[index])
 
     }
     async momo(e) {
-        e.reply('你在做什么.....这...可是很失礼的')
+        let tie = [
+            '你在做什么...这......这可是很失礼的',
+            '呐,给你摸好了(伸手)'
+        ]
+        let index = Math.floor((Math.random() * tie.length));
+        e.reply(tie[index])
 
     }
 
