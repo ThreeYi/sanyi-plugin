@@ -44,6 +44,13 @@ export class yule extends plugin {
 
         let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
         let b = await niuyaolianjie.text()
-        e.reply(`@${e.nickname}你要的东西来了` + b)
+        while (b = '获取json数量错误') {
+            niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
+            b = await niuyaolianjie.text()
+        }
+        if (b != '获取json数量错误') {
+            e.reply(`@${e.nickname}你要的东西来了` + b)
+        }
+
     }
 }
