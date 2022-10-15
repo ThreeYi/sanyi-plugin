@@ -47,8 +47,7 @@ export class yule extends plugin {
     async niuyao(e) {
         let cd = await redis.get(`Yz:sanyi:yule:niuyao:cd`)
         if (!cd || Number(cd) == 0) {
-            let niuyaolianjie = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi')
-            let b = await niuyaolianjie.text()
+            let b = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi').then(data => { return data.text() })
             if (b != '获取json数量错误') {
                 e.reply(`@${e.nickname}你要的东西来了` + b)
                 redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
