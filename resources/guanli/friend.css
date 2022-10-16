@@ -1,6 +1,6 @@
 body {
     height: 100%;
-    width: 75%;
+    width: 80%;
     background: #ffffff;
     font-size: 14px;
 }
@@ -37,13 +37,23 @@ div {
     display: flex;
 }
 
-.item img {
+.img_online {
     width: 45px;
     height: 45px;
     margin-left: 5px;
     margin-top: 7px;
     float: left;
     border-radius: 50px;
+}
+
+.img_no_online {
+    width: 45px;
+    height: 45px;
+    margin-left: 5px;
+    margin-top: 7px;
+    float: left;
+    border-radius: 50px;
+    filter: grayscale(100%);
 }
 
 .des {
