@@ -8,16 +8,26 @@
 
 <body>
 
-
     <script type="text/javascript">
-        var allname = "{{allname}}"
-        var name_list = allname.split(',')
-        var allkey = "{{allkey}}"
-        var key_list = allkey.split(',')
-        document.write('<div class="haoyou"><div class="bt">好友列表' + (name_list.length - 1) + '</div> </div>')
-        for (let i = 0; i < +name_list.length - 1; i++) {
-            document.write('<div class="item"><img src=https://q1.qlogo.cn/g?b=qq&s=0&nk=' + key_list[i] + '" alt=""><div class="des"><div class="name">' + name_list[i] + '</div> <div class="sign">[在线]这里是给签名留的位置</div></div></div>')
+        var all_online_name = "{{all_online_name}}"
+        var online_name = all_online_name.split(',')
+        var all_online_list = "{{all_online_list}}"
+        var online_list = all_online_list.split(',')
+        var all_online_statu = "{{all_online_statu}}"
+        var online_statu = all_online_statu.split(',')
 
+        var all_no_online_name = "{{all_no_online_name}}"
+        var no_online_name = all_no_online_name.split(',')
+        var all_no_online_list = "{{all_no_online_list}}"
+        var no_online_list = all_no_online_list.split(',')
+
+
+        document.write('<div class="haoyou"><div class="bt">好友列表' + '(' + online_name.length + '/' + (online_name.length + no_online_name.length) + ')' + '</div> </div>')
+        for (let i = 0; i < +online_name.length; i++) {
+            document.write('<div class="item"><img src=https://q1.qlogo.cn/g?b=qq&s=0&nk=' + online_list[i] + '" alt=""><div class="des"><div class="name">' + online_name[i] + '(' + online_list[i] + ')' + '</div> <div class="sign">[' + online_statu[i] + ']这里是给签名留的位置</div></div></div>')
+        }
+        for (let i = 0; i < +no_online_name.length; i++) {
+            document.write('<div class="item"><img src=https://q1.qlogo.cn/g?b=qq&s=0&nk=' + no_online_list[i] + '" alt=""><div class="des"><div class="name">' + no_online_name[i] + '(' + no_online_list[i] + ')' + '</div> <div class="sign">[离线]这里是给签名留的位置</div></div></div>')
         }
     </script>
 

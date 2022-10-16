@@ -1,7 +1,17 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
+import { core } from 'oicq'
 
 
+
+function isInArray(arr, value) {
+    for (var i = 0; i < arr.length; i++) {
+        if (value === arr[i]) {
+            return true;
+        }
+    }
+    return false;
+}
 
 export class guanli extends plugin {
     constructor() {
@@ -27,27 +37,43 @@ export class guanli extends plugin {
 
 
     async get_friend_list(e) {
-        let f = Bot.fl
-        let allname = ''
-        let allimg = ''
-        let allsign = ''
-        let allstatu = ''
-        let allkey = ''
         let pl = process.cwd()
+        let f = Bot.fl
+        let online_list = []
+        let online_statu = []
+        let online_name = []
+        let no_online_name = []
+        let no_online_list = []
+        const FSOLREQ = core.jce.encodeStruct([
+            Bot.uin, 0, 0, null, 1, 31, 0
+        ])
+        const body = core.jce.encodeWrapper({ FSOLREQ }, "mqq.IMService.FriendListServiceServantObj", "GetSimpleOnlineFriendInfoReq")
+        const payload = await Bot.sendUni("friendlist.GetSimpleOnlineFriendInfoReq", body)
+        const rsp = core.jce.decodeWrapper(payload)[1]
+        for (let i of rsp) {
+            online_list.push(i[0])
+            online_statu.push(i[14])
+            online_name.push(Bot.pickFriend(Number(i[0])).nickname)
+        }
+
+
         for (let [key, value] of f) {
-            allkey = allkey.concat(`${key},`)
-            allname = allname.concat(`${value.nickname}(${key}),`)
-            allimg = allimg.concat(`${value.nickname},`)
-            allsign = allsign.concat(`${value.signature},`)
-            allstatu = allstatu.concat(`${String(value.online_status)},`)
+            if (!isInArray(online_list, key)) {
+                no_online_name.push(value.nickname)
+                no_online_list.push(key)
+                    // online_name_list.push(value.nickname)
+            }
         }
         let data1 = {}
 
         data1 = {
             tplFile: './plugins/sanyi-plugin/resources/guanli/friend.html',
-            allname: allname,
-            allkey: allkey,
+            all_online_name: String(online_name),
+            all_online_list: String(online_list),
+            all_online_statu: String(online_statu),
             pl: pl,
+            all_no_online_name: String(no_online_name),
+            all_no_online_list: String(no_online_list)
 
         }
         let img = await puppeteer.screenshot("好友列表", {
