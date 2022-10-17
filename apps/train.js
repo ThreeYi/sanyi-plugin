@@ -1,7 +1,11 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 
-let a = '优菈' //机器人名字
+import YAML from "yaml"
+import fs from "node:fs"
+
+let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
+const a = botinfo.bot_name
 
 function nowday() {
     var nowtime = new Date()
