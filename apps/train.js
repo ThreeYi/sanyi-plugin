@@ -87,6 +87,10 @@ export class train extends plugin {
 
     }
     async xunlian(e) {
+        if (e.isPrivate) {
+            e.reply('请在群聊中使用')
+            return true
+        }
         let b = e.nickname
         let value = 0
         value += Math.floor(Math.random() * 4)
