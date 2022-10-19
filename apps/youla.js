@@ -12,22 +12,6 @@ export class youla extends plugin {
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: "早上好",
-                    fnc: "zaoshanghao",
-                },
-                {
-                    reg: "中午好",
-                    fnc: "zhongwuhao",
-                },
-                {
-                    reg: "晚上好",
-                    fnc: "wanshanghao",
-                },
-                {
-                    reg: "晚安",
-                    fnc: 'wanan',
-                },
-                {
                     reg: "优菈贴贴",
                     fnc: 'tietie',
                 },
@@ -42,26 +26,7 @@ export class youla extends plugin {
     }
 
 
-    async zaoshanghao(e) {
 
-        e.reply(segment.record(yunyin_path + '早上好.mp3'))
-
-    }
-    async zhongwuhao(e) {
-
-        e.reply(segment.record(yunyin_path + '中午好.mp3'))
-
-    }
-    async wanshanghao(e) {
-
-        e.reply(segment.record(yunyin_path + '晚上好.mp3'))
-
-    }
-    async wanan(e) {
-
-        e.reply(segment.record(yunyin_path + '晚安.mp3'))
-
-    }
     async tietie(e) {
         let mo = [
             '离我远点，真是可耻又无礼的行为',
