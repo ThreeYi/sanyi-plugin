@@ -1,6 +1,20 @@
+@font-face {
+    font-family: "txbzt";
+    src: url("腾讯标准体.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "w3";
+    src: url("腾讯体w3.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     height: 100%;
-    width: 80%;
+    width: 100%;
     background: #ffffff;
     font-size: 14px;
 }
@@ -31,26 +45,26 @@ div {
 .item {
     background: #ffffff;
     margin: auto;
-    margin-top: 2px;
+    margin-top: 8px;
     width: 80%;
     height: 70px;
     display: flex;
 }
 
 .img_online {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     margin-left: 5px;
-    margin-top: 7px;
+    margin-top: 15px;
     float: left;
     border-radius: 50px;
 }
 
 .img_no_online {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     margin-left: 5px;
-    margin-top: 7px;
+    margin-top: 15px;
     float: left;
     border-radius: 50px;
     filter: grayscale(100%);
@@ -64,14 +78,17 @@ div {
 }
 
 .name {
+    font-family: "txbzt";
     float: top;
-    font-size: 22px;
+    font-size: 32px;
     text-align: left;
 }
 
 .sign {
+    font-family: "w3";
     float: top;
-    font-size: 16px;
+    font-size: 23px;
+    margin-top: -5px;
     text-align: left;
 }
 
