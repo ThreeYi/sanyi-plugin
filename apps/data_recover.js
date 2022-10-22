@@ -39,7 +39,7 @@ export class data_recover extends plugin {
             }
         }
         bei = JSON.stringify(bei)
-        fs.writeFile('./plugins/sanyi-plugin/resources/redis_data.json', bei, 'utf8', function(err) {
+        fs.writeFile('./data/redis_data.json', bei, 'utf8', function(err) {
             if (err) {
                 console.log(err);
                 return false;
@@ -53,7 +53,7 @@ export class data_recover extends plugin {
         let re_fail_num = 0
         let re_ok_num = 0
         let re_failkey = ''
-        fs.readFile('./plugins/sanyi-plugin/resources/redis_data.json', function(err, data) {
+        fs.readFile('./data/redis_data.json', function(err, data) {
             if (err) {
                 console.log(err);
                 return false;
