@@ -2,6 +2,7 @@ import plugin from "../../../lib/plugins/plugin.js";
 import { segment } from "oicq";
 import fetch from 'node-fetch'
 import fs from 'node:fs'
+import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 export class yule extends plugin {
     constructor() {
         super({
