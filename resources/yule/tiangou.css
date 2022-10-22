@@ -10,7 +10,7 @@ body {
     width: 1080px;
     background-image: url('日记背景.jpg');
     font-size: 52px;
-    color: #cb99c5;
+    color: #8b008b;
 }
 
 div {
@@ -51,7 +51,7 @@ div {
 .jw {
     position: absolute;
     bottom: 10px;
-    left: 300px;
+    left: 380px;
     text-align: center;
-    font-size: 54px;
+    font-size: 40px;
 }
