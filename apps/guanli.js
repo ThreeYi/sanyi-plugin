@@ -35,13 +35,18 @@ export class guanli extends plugin {
                     fnc: "get_group_list",
                     permission: 'master'
                 },
+                {
+                    reg: "^#获取好友个性签名$",
+                    fnc: "get_sign",
+                    permission: 'master'
+                },
             ],
         });
     }
 
-    async get_sign(num) {
-        let friend_sign0 = await redis.get(`Yz:sanyi:qqsign:${num}`)
-        if (!friend_sign0) {
+    async get_sign(e) {
+        let f = Bot.fl
+        for (let [key, value] of f) {
             let url = 'https://find.qq.com/proxy/domain/cgi.find.qq.com/qqfind/find_v11?backver=2'
             let res = await fetch(url, {
                 method: 'POST',
@@ -50,7 +55,7 @@ export class guanli extends plugin {
                     "Content-Type": "application/x-www-form-urlencoded",
                     cookie: botcookie,
                 },
-                body: 'bnum=15&pagesize=15&id=0&sid=0&page=0&pageindex=0&ext=&guagua=1&gnum=12&guaguan=2&type=2&ver=4903&longitude=116.405285&latitude=39.904989&lbs_addr_country=%E4%B8%AD%E5%9B%BD&lbs_addr_province=%E5%8C%97%E4%BA%AC&lbs_addr_city=%E5%8C%97%E4%BA%AC%E5%B8%82&keyword=' + String(num) + '&nf=0&of=0&ldw=' + String(bkn)
+                body: 'bnum=15&pagesize=15&id=0&sid=0&page=0&pageindex=0&ext=&guagua=1&gnum=12&guaguan=2&type=2&ver=4903&longitude=116.405285&latitude=39.904989&lbs_addr_country=%E4%B8%AD%E5%9B%BD&lbs_addr_province=%E5%8C%97%E4%BA%AC&lbs_addr_city=%E5%8C%97%E4%BA%AC%E5%B8%82&keyword=' + String(key) + '&nf=0&of=0&ldw=' + String(bkn)
             })
             let cc = await res.text()
             cc = cc.match(/"lnick":"(.*?)"/g)
@@ -59,20 +64,10 @@ export class guanli extends plugin {
             cc = cc.replace('，"', '')
             cc = cc.replace('"', '')
             cc = cc.replace(',', '，')
-            friend_sign0 = cc.replace('’', '')
-            await redis.set(`Yz:sanyi:qqsign:${num}`, friend_sign0)
-        } else {
-            friend_sign0 = String(friend_sign0)
+            cc = cc.replace('’', '')
+            await redis.set(`Yz:sanyi:qqsign:${key}`, cc)
         }
-        if (friend_sign0 == 'null') {
-            friend_sign0 = ''
-        } else {
-            if (friend_sign0.length >= 18) {
-                friend_sign0 = friend_sign0.slice(0, 17) + '...'
-            }
-        }
-        return friend_sign0
-
+        e.reply('签名获取已完成,现在使用 #好友列表 可看到签名')
     }
     async get_friend_list(e) {
         let pl = process.cwd()
@@ -93,20 +88,35 @@ export class guanli extends plugin {
             online_list.push(i[0])
             online_statu.push(i[14])
             online_name.push(Bot.pickFriend(Number(i[0])).nickname)
-            sign_list.push(await this.get_sign(i[0]))
+                // sign_list.push(await this.get_sign(i[0]))
+            let signnature0 = await redis.get(`Yz:sanyi:qqsign:${i[0]}`)
+            if (!signnature0 || String(signnature0) == 'null') {
+                sign_list.push('')
+            } else {
+                if (signnature0.length >= 18) {
+                    signnature0 = signnature0.slice(0, 17) + '...'
+                }
+                sign_list.push(signnature0)
+            }
         }
 
         for (let [key, value] of f) {
             if (!isInArray(online_list, key)) {
                 no_online_name.push(value.nickname)
                 no_online_list.push(key)
-                sign_list.push(await this.get_sign(key))
+                    // sign_list.push(await this.get_sign(key))
+                let signnature = await redis.get(`Yz:sanyi:qqsign:${key}`)
+                if (!signnature || String(signnature) == 'null') {
+                    sign_list.push('')
+                } else {
+                    if (signnature.length >= 18) {
+                        signnature = signnature.slice(0, 17) + '...'
+                    }
+                    sign_list.push(signnature)
+                }
             }
         }
         let data1 = {}
-        console.log(online_name)
-        console.log(no_online_name)
-        console.log(sign_list)
         data1 = {
             tplFile: './plugins/sanyi-plugin/resources/guanli/friend.html',
             all_online_name: String(online_name),

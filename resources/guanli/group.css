@@ -7,7 +7,7 @@
 
 body {
     height: 100%;
-    width: 100%;
+    width: 1080px;
     background: #ffffff;
     font-size: 14px;
 }
@@ -58,7 +58,7 @@ div {
     float: top;
     margin-top: 3px;
     margin-left: 5px;
-    font-size: 30px;
+    font-size: 32px;
     text-align: left;
 }
 
