@@ -53,5 +53,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
       
  6、 #数据库备份 #数据库恢复 //redis里面的东西备份到文件，使用恢复功能从文件恢复数据到redis
 
+ 7、#三一更新   #三一强制更新  //更新命令
+
 #### 其他
 本人QQ:89388003
