@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "txbzt";
+    src: url("q_name.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     height: 100%;
     width: 100%;
@@ -47,6 +54,7 @@ div {
 }
 
 .name {
+    font-family: "txbzt";
     float: top;
     margin-top: 3px;
     margin-left: 5px;

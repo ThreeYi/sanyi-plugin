@@ -40,28 +40,39 @@ export class guanli extends plugin {
     }
 
     async get_sign(num) {
+        let friend_sign0 = await redis.get(`Yz:sanyi:qqsign:${num}`)
+        if (!friend_sign0) {
+            let url = 'https://find.qq.com/proxy/domain/cgi.find.qq.com/qqfind/find_v11?backver=2'
+            let res = await fetch(url, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    cookie: botcookie,
+                },
+                body: 'bnum=15&pagesize=15&id=0&sid=0&page=0&pageindex=0&ext=&guagua=1&gnum=12&guaguan=2&type=2&ver=4903&longitude=116.405285&latitude=39.904989&lbs_addr_country=%E4%B8%AD%E5%9B%BD&lbs_addr_province=%E5%8C%97%E4%BA%AC&lbs_addr_city=%E5%8C%97%E4%BA%AC%E5%B8%82&keyword=' + String(num) + '&nf=0&of=0&ldw=' + String(bkn)
+            })
+            let cc = await res.text()
+            cc = cc.match(/"lnick":"(.*?)"/g)
+            cc = String(cc)
+            cc = cc.replace('"lnick":"', '')
+            cc = cc.replace('，"', '')
+            cc = cc.replace('"', '')
+            cc = cc.replace(',', '，')
+            friend_sign0 = cc.replace('’', '')
+            await redis.set(`Yz:sanyi:qqsign:${num}`, friend_sign0)
+        } else {
+            friend_sign0 = String(friend_sign0)
+        }
+        if (friend_sign0 == 'null') {
+            friend_sign0 = ''
+        } else {
+            if (friend_sign0.length >= 18) {
+                friend_sign0 = friend_sign0.slice(0, 17) + '...'
+            }
+        }
+        return friend_sign0
 
-        let url = 'https://find.qq.com/proxy/domain/cgi.find.qq.com/qqfind/find_v11?backver=2'
-        let res = await fetch(url, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                cookie: botcookie,
-            },
-            body: 'bnum=15&pagesize=15&id=0&sid=0&page=0&pageindex=0&ext=&guagua=1&gnum=12&guaguan=2&type=2&ver=4903&longitude=116.405285&latitude=39.904989&lbs_addr_country=%E4%B8%AD%E5%9B%BD&lbs_addr_province=%E5%8C%97%E4%BA%AC&lbs_addr_city=%E5%8C%97%E4%BA%AC%E5%B8%82&keyword=' + String(num) + '&nf=0&of=0&ldw=' + String(bkn)
-
-        })
-        let cc = await res.text()
-        cc = cc.match(/"lnick":"(.*?)"/g)
-
-        cc = String(cc)
-        cc = cc.replace('"lnick":"', '')
-        cc = cc.replace('，"', '')
-        cc = cc.replace('"', '')
-        cc = cc.replace(',', '，')
-        cc = cc.replace('’', '')
-        return cc
     }
     async get_friend_list(e) {
         let pl = process.cwd()
@@ -82,41 +93,14 @@ export class guanli extends plugin {
             online_list.push(i[0])
             online_statu.push(i[14])
             online_name.push(Bot.pickFriend(Number(i[0])).nickname)
-
-            let friend_sign0 = await this.get_sign(i[0])
-            if (String(friend_sign0) == 'null') {
-                friend_sign0 = ''
-                sign_list.push(friend_sign0)
-            } else {
-                if (friend_sign0.length >= 18) {
-                    sign_list.push(friend_sign0.slice(0, 17) + '...')
-                } else {
-                    sign_list.push(friend_sign0)
-                }
-
-            }
-
+            sign_list.push(await this.get_sign(i[0]))
         }
-
 
         for (let [key, value] of f) {
             if (!isInArray(online_list, key)) {
                 no_online_name.push(value.nickname)
                 no_online_list.push(key)
-                let friend_sign = await this.get_sign(key)
-                if (String(friend_sign) == 'null') {
-                    friend_sign = ''
-                    sign_list.push(friend_sign)
-                } else {
-                    if (friend_sign.length >= 18) {
-                        sign_list.push(friend_sign.slice(0, 17) + '...')
-                    } else {
-                        sign_list.push(friend_sign)
-                    }
-
-                }
-
-                // online_name_list.push(value.nickname)
+                sign_list.push(await this.get_sign(key))
             }
         }
         let data1 = {}
@@ -132,8 +116,6 @@ export class guanli extends plugin {
             all_no_online_name: String(no_online_name),
             all_no_online_list: String(no_online_list),
             all_sign: String(sign_list),
-
-
         }
         let img = await puppeteer.screenshot("好友列表", {
             ...data1,
