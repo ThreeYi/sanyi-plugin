@@ -1,7 +1,7 @@
 import plugin from "../../../lib/plugins/plugin.js";
 import { segment } from "oicq";
 import fetch from 'node-fetch'
-import fs from 'node-fs'
+import fs from 'node:fs'
 export class yule extends plugin {
     constructor() {
         super({
