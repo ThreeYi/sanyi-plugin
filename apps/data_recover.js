@@ -1,7 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import fs from "node:fs"
 
-export class te extends plugin {
+export class data_recover extends plugin {
     constructor() {
         super({
             name: "数据库备份",
