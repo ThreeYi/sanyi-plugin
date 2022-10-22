@@ -25,6 +25,10 @@ export class yule extends plugin {
                     reg: "^重置扭腰$",
                     fnc: 'reniuyao',
                 },
+                {
+                    reg: "^舔狗日记$",
+                    fnc: 'tian_gou',
+                },
             ],
         });
     }
@@ -65,5 +69,43 @@ export class yule extends plugin {
     async reniuyao(e) {
         await redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
         e.reply('祭礼枪被动触发,已重置圣贤时间cd')
+    }
+    async tian_gou(e) {
+        let pl = process.cwd()
+        fs.readFile('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function(err, data) {
+            if (err) {
+                console.log(err);
+                return false;
+            }
+            data = data.toString()
+            data = data.replace("*", "")
+            data = data.replace("'", "")
+            let data_list = data.split('\n')
+                // console.log(data_list[0])
+            let t_index = Math.ceil(Math.random() * data_list.length)
+            let riji = data_list[t_index]
+            riji = riji.slice(1, riji.length - 3)
+            riji = riji.replace(/'\*'/g, '')
+            let time = new Date()
+            let day_date = String(time.getFullYear()) + '/' + String(time.getMonth() + 1) + '/' + String(time.getDate())
+
+            console.log(day_date)
+            console.log(riji)
+                //  console.log('chegngogn')
+            let data1 = {}
+            data1 = {
+                tplFile: './plugins/sanyi-plugin/resources/yule/tiangou.html',
+                day_date: day_date,
+                riji: riji,
+                pl: pl,
+
+            }
+            puppeteer.screenshot("舔狗日记", {
+                ...data1,
+            }).then(img => {
+                e.reply(img)
+            })
+        })
+
     }
 }

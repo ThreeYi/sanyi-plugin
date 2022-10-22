@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "rj";
+    src: url("HYTiaoTiao.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 1578px;
+    width: 1080px;
+    background-image: url('日记背景.jpg');
+    font-size: 52px;
+    color: #cb99c5;
+}
+
+div {
+    text-align: left;
+}
+
+.item {
+    font-family: "rj";
+    position: absolute;
+    top: 350px;
+    left: 160px;
+    right: 160px;
+}
+
+.date {
+    font-family: "rj";
+    position: absolute;
+    top: 240px;
+    left: 150px;
+    right: 200px;
+}
+
+.tianqi {
+    font-family: "rj";
+    position: absolute;
+    top: 240px;
+    right: 150px;
+    text-align: right;
+    font-size: 54px;
+}
+
+.auth {
+    text-align: right;
+    position: absolute;
+    right: 150px;
+}
+
+.jw {
+    position: absolute;
+    bottom: 10px;
+    left: 300px;
+    text-align: center;
+    font-size: 54px;
+}
