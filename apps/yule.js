@@ -11,7 +11,7 @@ export class yule extends plugin {
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: "学习茶艺",
+                    reg: "^绿茶语音$",
                     fnc: "yuyin",
                 },
                 {
