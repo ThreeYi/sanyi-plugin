@@ -3,6 +3,7 @@ import { segment } from "oicq";
 import fetch from 'node-fetch'
 import fs from 'node:fs'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
+import uploadRecord from '../../xiaofei-plugin/model/uploadRecord.js'
 export class yule extends plugin {
     constructor() {
         super({
@@ -37,7 +38,7 @@ export class yule extends plugin {
 
     async yuyin(e) {
         let url = "http://xiaobapi.top/api/xb/api/lvcha.php";
-        e.reply(segment.record(url))
+        e.reply(await uploadRecord('url', 0, false))
     }
     async guzhi(e) {
         if (e.isGroup) {
