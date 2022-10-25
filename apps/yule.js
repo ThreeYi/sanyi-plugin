@@ -38,7 +38,7 @@ export class yule extends plugin {
 
     async yuyin(e) {
         let url = "http://xiaobapi.top/api/xb/api/lvcha.php";
-        e.reply(await uploadRecord('url', 0, false))
+        e.reply(await uploadRecord(url, 0, false))
     }
     async guzhi(e) {
         if (e.isGroup) {
