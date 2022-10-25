@@ -24,8 +24,16 @@ js一窍不通，只有依葫芦画瓢的程度,有些还没完善
 
 
 #### 安装教程
+1、需要先安装小飞插件
+在Yunzai-Bot目录下运行以下命令
 
-在Yunzai-Bot目录下运行以下命令，完成后重启Bot
+```
+git clone https://gitee.com/xfdown/xiaofei-plugin.git ./plugins/xiaofei-plugin/
+
+```
+
+
+2、然后在Yunzai-Bot目录下运行以下命令，安装三一插件
 
 
 ```
@@ -33,10 +41,12 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
 
+3、安装好后重启机器人
+
 
 #### 使用说明
 
-1、无需环境配置，能使用云崽和喵喵插件这个就能正常用
+1、无需环境配置，能使用云崽和喵喵插件和小飞插件，这个就能正常用
 
 2、没有写容错，注意命令格式
 #### 命令（没加#号的命令使用时不能加#）
