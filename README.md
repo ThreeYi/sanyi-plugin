@@ -2,6 +2,7 @@
 
 #### 介绍
 不想要哪个把对应的js删掉,不会写开关（开摆
+感谢[@小飞](https://gitee.com/xfdown)大佬的高清语音 
 
 #### 软件架构
 js一窍不通，只有依葫芦画瓢的程度,有些还没完善
@@ -24,16 +25,8 @@ js一窍不通，只有依葫芦画瓢的程度,有些还没完善
 
 
 #### 安装教程
-1、需要先安装小飞插件
-在Yunzai-Bot目录下运行以下命令
 
-```
-git clone https://gitee.com/xfdown/xiaofei-plugin.git ./plugins/xiaofei-plugin/
-
-```
-
-
-2、然后在Yunzai-Bot目录下运行以下命令，安装三一插件
+1、然后在Yunzai-Bot目录下运行以下命令，安装三一插件
 
 
 ```
@@ -41,7 +34,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
 
-3、安装好后重启机器人
+2、安装好后重启机器人
 
 
 #### 使用说明
