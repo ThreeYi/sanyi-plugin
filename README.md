@@ -30,7 +30,7 @@ cv了[@小飞](https://gitee.com/xfdown)大佬的高清语音 ，特别感谢
 
 #### 安装教程
 
-1、然后在Yunzai-Bot目录下运行以下命令，安装三一插件
+1、在Yunzai-Bot目录下运行以下命令，安装插件
 
 
 ```
@@ -43,7 +43,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 #### 使用说明
 
-1、无需环境配置，能使用云崽和喵喵插件和小飞插件，这个就能正常用
+1、无需环境配置，能使用云崽和喵喵插件，这个就能正常用
 
 2、没有写容错，注意命令格式
 #### 命令（没加#号的命令使用时不能加#）
@@ -63,4 +63,4 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
  7、#三一更新   #三一强制更新  //更新命令
 
 #### 其他
-本人QQ:89388003
+联系方式QQ:89388003
