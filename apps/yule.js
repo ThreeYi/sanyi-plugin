@@ -53,7 +53,7 @@ export class yule extends plugin {
     async niuyao(e) {
         let cd = await redis.get(`Yz:sanyi:yule:niuyao:cd`)
         if (!cd || Number(cd) == 0) {
-            let b = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=qiqi').then(data => { return data.text() })
+            let b = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286').then(data => { return data.text() })
             if (b != '获取json数量错误') {
                 e.reply(`@${e.nickname}你要的东西来了` + b)
                 redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
@@ -83,7 +83,6 @@ export class yule extends plugin {
             data = data.replace("*", "")
             data = data.replace("'", "")
             let data_list = data.split('\n')
-                // console.log(data_list[0])
             let t_index = Math.ceil(Math.random() * data_list.length)
             let riji = data_list[t_index]
             riji = riji.slice(1, riji.length - 3)
@@ -93,7 +92,6 @@ export class yule extends plugin {
 
             console.log(day_date)
             console.log(riji)
-                //  console.log('chegngogn')
             let data1 = {}
             data1 = {
                 tplFile: './plugins/sanyi-plugin/resources/yule/tiangou.html',
