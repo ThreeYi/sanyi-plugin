@@ -63,4 +63,6 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
  7、#三一更新   #三一强制更新  //更新命令
 
 #### 其他
+[gitee地址](https://gitee.com/ThreeYi/sanyi-plugin)/[github地址](https://github.com/ThreeYi/sanyi-plugin)
+
 联系方式QQ:89388003
