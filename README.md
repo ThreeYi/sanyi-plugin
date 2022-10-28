@@ -58,7 +58,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
  5、扭腰 学习茶艺 qq估值 舔狗日记  //娱乐功能，茶艺需要ffmpeg才能用
       
- 6、 #数据库备份 #数据库恢复 //redis里面的东西备份到文件，使用恢复功能从文件恢复数据到redis
+ 6、 #数据库备份 #数据库恢复 //redis里面的东西备份到文件，使用恢复功能从文件恢复数据到redis，要先备份才能恢复
 
  7、#三一更新   #三一强制更新  //更新命令
 
