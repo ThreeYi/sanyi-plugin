@@ -51,11 +51,48 @@ export class yule extends plugin {
         }
     }
     async niuyao(e) {
+        fs.exists('./plugins/sanyi-plugin/resources/temp.mp4', (exists) => {
+            if (exists) {
+                fs.unlink('./plugins/sanyi-plugin/resources/temp.mp4', function(err) {
+                    if (err) {
+                        console.log(err)
+                        return false
+                    }
+                    console.log('已经删除上次缓存旧文件')
+                })
+            } else {
+                console.log("文件不存在");
+            }
+        });
         let cd = await redis.get(`Yz:sanyi:yule:niuyao:cd`)
         if (!cd || Number(cd) == 0) {
             let b = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286').then(data => { return data.text() })
             if (b != '获取json数量错误') {
-                e.reply(`@${e.nickname}你要的东西来了` + b)
+                // e.reply(`@${e.nickname}你要的东西来了` + b)
+                let url = b.split('\n')[1]
+                let res = await fetch(url)
+                res = await res.arrayBuffer()
+                const video_data = Buffer.from(res);
+                await fs.writeFile("./plugins/sanyi-plugin/resources/temp.mp4", video_data, { encoding: 'binary', }, function(err) {
+                    if (!err) {
+                        console.log("写入成功");
+                        e.reply('稍等，马上就到')
+                        try {
+                            e.reply(segment.video('./plugins/sanyi-plugin/resources/temp.mp4'))
+                        } catch (err) {
+                            console.log(err)
+                            e.reply('太瑟了发不出来，换个看看吧')
+                            fs.unlink('./plugins/sanyi-plugin/resources/temp.mp4', function(err) {
+                                if (err) {
+                                    console.log(err)
+                                    return false
+                                }
+                                console.log('已经删除已存在视频')
+                            })
+                        }
+                    }
+                })
+
                 redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
                     setTimeout(() => {
                         redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
