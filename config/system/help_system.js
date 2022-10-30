@@ -28,11 +28,11 @@ export const helpList = [
 {
   group: '三一插件功能',
   list: [{
-    icon: 33,
+    icon: 25,
     title: '扭腰 ',
     desc: '斯哈斯哈~'
   },{
-    icon: 33,
+    icon: 32,
     title: '绿茶语音',
     desc: '温柔懂事好妹妹谁不爱呢'
   },{
@@ -40,7 +40,7 @@ export const helpList = [
     title: '#优菈上班 #优菈下班 ',
     desc: '上下班,用bot名字换掉优菈'
   },{
-    icon: 33,
+    icon: 40,
     title: '训练',
     desc: '好感度玩法'
   },{
@@ -48,11 +48,11 @@ export const helpList = [
     title: '#戳一戳',
     desc: '群聊戳一戳'
   },{
-    icon: 91,
+    icon: 78,
     title: '舔狗日记',
     desc: '女神回我信息了唉！'
   },{
-    icon: 91,
+    icon: 24,
     title: 'qq估值',
     desc: '图一乐，时代的眼泪'
   }]
@@ -65,16 +65,16 @@ export const helpList = [
     desc: '更新插件'
   },
   {
-    icon: 35,
+    icon: 92,
     title: '#数据库备份 #数据库恢复',
     desc: '备份redis数据到文件'
   },{
-    icon: 35,
+    icon: 6,
     title: '#好友列表 #群列表',
     desc: '查看机器人好友'
   },
   {
-    icon: 35,
+    icon: 71,
     title: '#获取好友个性签名',
     desc: '执行后好友列表会显示签名'
   },]
