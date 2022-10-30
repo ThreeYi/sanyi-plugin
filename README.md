@@ -25,27 +25,22 @@ cv了[@小飞](https://gitee.com/xfdown)大佬的高清语音 ，特别感谢
       6、数据库备份和恢复
       
 
-
 ### 安装教程
 
 1、下面两个安装方式任选一个，在Yunzai-Bot目录下运行，安装插件（推荐使用gitee）
-
 #### （1）使用gitee安装
 
 ```
-
 git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
-
 ```
 
 #### （2）使用GitHub安装
 
 ```
 git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
-
 ```
-2、安装好后重启机器人
 
+2、安装好后重启机器人
 
 ### 使用说明
 
