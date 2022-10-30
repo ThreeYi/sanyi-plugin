@@ -36,7 +36,7 @@ export const helpList = [
     title: '绿茶语音',
     desc: '温柔懂事好妹妹谁不爱呢'
   },{
-    icon: 33,
+    icon: 9,
     title: '#优菈上班 #优菈下班 ',
     desc: '上下班,用bot名字换掉优菈'
   },{
@@ -60,7 +60,7 @@ export const helpList = [
   group: '管理命令，仅管理员可用',
   auth: 'master',
   list: [{
-    icon: 35,
+    icon: 85,
     title: '#三一更新 #三一强制更新',
     desc: '更新插件'
   },
@@ -69,7 +69,7 @@ export const helpList = [
     title: '#数据库备份 #数据库恢复',
     desc: '备份redis数据到文件'
   },{
-    icon: 6,
+    icon: 75,
     title: '#好友列表 #群列表',
     desc: '查看机器人好友'
   },

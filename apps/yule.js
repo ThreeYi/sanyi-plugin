@@ -43,7 +43,7 @@ export class yule extends plugin {
     async guzhi(e) {
         if (e.isGroup) {
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
-            e.reply(segment.image(url1)).then(mes => {
+             await e.reply(segment.image(url1)).then(mes => {
                 setTimeout(() => {
                     e.group.recallMsg(mes.message_id);
                 }, 50000);
