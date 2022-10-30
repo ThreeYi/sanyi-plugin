@@ -1,11 +1,11 @@
 # sanyi-plugin
 
-#### 介绍
+### 介绍
 不想要哪个把对应的js删掉,不会写开关（开摆
 
 
 
-#### 软件架构
+### 软件架构
 js一窍不通，只有依葫芦画瓢的程度,有些还没完善
 
 cv了[@小飞](https://gitee.com/xfdown)大佬的高清语音 ，特别感谢
@@ -26,11 +26,11 @@ cv了[@小飞](https://gitee.com/xfdown)大佬的高清语音 ，特别感谢
       
 
 
-#### 安装教程
+### 安装教程
 
 1、下面两个安装方式任选一个，在Yunzai-Bot目录下运行，安装插件（推荐使用gitee）
 
-### （1）使用gitee安装
+#### （1）使用gitee安装
 
 ```
 
@@ -38,7 +38,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 ```
 
-### （2）使用GitHub安装
+#### （2）使用GitHub安装
 
 ```
 git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
@@ -47,12 +47,12 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 2、安装好后重启机器人
 
 
-#### 使用说明
+### 使用说明
 
 1、无需环境配置，能使用云崽和喵喵插件，这个就能正常用
 
 2、没有写容错，注意命令格式
-#### 命令（没加#号的命令加#不会触发）
+### 命令（没加#号的命令加#不会触发）
   
  0、#三一帮助 #三一版本   //查看命令帮助和版本改动
 
@@ -70,7 +70,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
  7、#三一更新   #三一强制更新  //更新命令
 
-#### 其他
+### 其他
 [gitee地址](https://gitee.com/ThreeYi/sanyi-plugin)/[github地址](https://github.com/ThreeYi/sanyi-plugin)
 
 联系方式QQ:89388003
