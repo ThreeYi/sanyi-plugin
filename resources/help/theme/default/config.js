@@ -16,9 +16,9 @@ export const style = {
   contBgBlur: 3,
 
   // 板块标题栏底
-  headerBgColor: 'rgba(63,48,46, .9)',
+  headerBgColor: 'rgba(63,48,46, .8)',
   // 帮助奇数行底色
   rowBgColor1: 'rgba(63,48,46, .6)',
   // 帮助偶数行底色
-  rowBgColor2: 'rgba(63,48,46, .75)'
+  rowBgColor2: 'rgba(63,48,46, .8)'
 }
