@@ -12,7 +12,7 @@ export class jinyong extends plugin {
             name: "机器人群开关",
             dsc: "控制机器人在指定群开关",
             event: "message",
-            priority: 2,
+            priority: 1,
             rule: [{
                     reg: `^#${botname}下班$`,
                     fnc: "jinyong",

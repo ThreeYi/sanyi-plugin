@@ -1,6 +1,10 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { segment } from 'oicq'
+import YAML from "yaml"
+import fs from "node:fs"
 
+let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
+let botname = botinfo.bot_name
 
 
 let yunyin_path = './plugins/sanyi-plugin/resources/yuyin/'
@@ -12,11 +16,11 @@ export class youla extends plugin {
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: "优菈贴贴",
+                    reg: `${botname}贴贴`,
                     fnc: 'tietie',
                 },
                 {
-                    reg: "优菈摸摸",
+                    reg: `${botname}摸摸`,
                     fnc: 'momo',
                 },
 
