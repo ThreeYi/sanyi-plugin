@@ -16,7 +16,7 @@ export class yule extends plugin {
                     fnc: "yuyin",
                 },
                 {
-                    reg: "^qq估值$",
+                    reg: "^#企鹅估值$",
                     fnc: "guzhi"
                 },
                 {

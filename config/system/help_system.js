@@ -53,7 +53,7 @@ export const helpList = [
     desc: '女神回我信息了唉！'
   },{
     icon: 24,
-    title: 'qq估值',
+    title: '#企鹅估值',
     desc: '图一乐，时代的眼泪'
   }]
 },{
