@@ -17,7 +17,7 @@ export class sanyi_help extends plugin {
 			rule: [
 				{
 					/** 命令正则匹配 */
-					reg: '^#?三一(插件)?帮助$',
+					reg: '^#三一帮助$',
 					/** 执行方法 */
 					fnc: 'message'
 				}
