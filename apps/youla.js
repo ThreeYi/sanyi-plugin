@@ -16,11 +16,11 @@ export class youla extends plugin {
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: `${botname}来贴贴`,
+                    reg: `${botname}贴贴`,
                     fnc: 'tietie',
                 },
                 {
-                    reg: `${botname}来摸摸`,
+                    reg: `${botname}摸摸`,
                     fnc: 'momo',
                 },
 
