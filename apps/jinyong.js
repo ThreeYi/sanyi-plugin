@@ -38,7 +38,7 @@ export class jinyong extends plugin {
             fs.writeFileSync(this.file, yaml, "utf8")
             e.reply(closetip)
         } else {
-            e.reply('请在群聊中使用')
+            e.reply('请在群聊中使用')  
         }
     }
 
