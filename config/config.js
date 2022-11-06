@@ -19,11 +19,17 @@ export default new class sycfg {
 
     async get_cfg(filename,cfgname){
         let cfg_list
+        let cfg_value
         try{
             cfg_list=YAML.parse(fs.readFileSync(this.config_path+filename, 'utf8'))
         }catch{
             cfg_list=YAML.parse(fs.readFileSync(this.default_config_path+filename, 'utf8'))
         }
-        return  cfg_list[cfgname]
+        cfg_value=cfg_list[cfgname]
+        if(cfg_value== undefined){
+            cfg_list=YAML.parse(fs.readFileSync(this.default_config_path+filename, 'utf8'))
+            cfg_value=cfg_list[cfgname]
+        }
+        return  cfg_value
     }
 }
