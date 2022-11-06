@@ -1,6 +1,6 @@
 import YAML from 'yaml'
 import fs from 'fs'
-export default class sycfg {
+export default new class sycfg {
 
     constructor() {
         this.default_config_path = './plugins/sanyi-plugin/config/default_config/'
@@ -24,6 +24,6 @@ export default class sycfg {
         }catch{
             cfg_list=YAML.parse(fs.readFileSync(this.default_config_path+filename, 'utf8'))
         }
-        return cfg_list
+        return await cfg_list
     }
 }
