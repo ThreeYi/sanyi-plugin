@@ -2,7 +2,7 @@ import plugin from '../../../lib/plugins/plugin.js'
 import YAML from "yaml"
 import fs from "node:fs"
 
-let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
+let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/config/bot.yaml", 'utf8'))
 let botname = botinfo.bot_name
 let starttip = botinfo.start_tip
 let closetip = botinfo.close_tip
