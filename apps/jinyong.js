@@ -1,11 +1,9 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import YAML from "yaml"
-import fs from "node:fs"
+import sycfg from '../config/config.js'
 
-let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/config/bot.yaml", 'utf8'))
-let botname = botinfo.bot_name
-let starttip = botinfo.start_tip
-let closetip = botinfo.close_tip
+let botname = await sycfg.get_cfg('bot.yaml','bot_name')
+let starttip = await sycfg.get_cfg('bot.yaml','start_tip')
+let closetip = await sycfg.get_cfg('bot.yaml','close_tip')
 export class jinyong extends plugin {
     constructor() {
         super({
