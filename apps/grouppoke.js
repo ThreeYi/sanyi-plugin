@@ -1,8 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js';
 import cfg from '../../../lib/config/config.js';
 import common from '../../../lib/common/common.js'
-import YAML from 'yaml';
-import fs from 'fs';
+import sycfg from '../config/config.js'
 export class grouppoke extends plugin {
     constructor() {
         super({
@@ -19,10 +18,14 @@ export class grouppoke extends plugin {
 
 
     async grouppoke(e) {
-        let words = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/grouppoke/grouppoke_words.yaml", 'utf8'))
+        let poke_switch=await sycfg.get_cfg('bot.yaaml',poke_switch)
+        if(poke_switch == false){
+            return false
+        }
+        let words=await sycfg.get_cfg('grouppoke_words.yaml','poked_words')
         let wordsindex = Math.ceil(Math.random() * words.length)
         let appindex = Math.ceil(Math.random() * 2)
-        if (e.target_id === cfg.qq) {
+        if (e.target_id == cfg.qq) {
             switch (appindex) {
                 case 1:
                     e.reply(words[wordsindex - 1])
