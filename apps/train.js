@@ -1,11 +1,8 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
+import sycfg from '../config/config.js'
 
-import YAML from "yaml"
-import fs from "node:fs"
-
-let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
-const a = botinfo.bot_name
+const a=await sycfg.get_cfg('bot.yaml','bot_name')
 
 function nowday() {
     var nowtime = new Date()

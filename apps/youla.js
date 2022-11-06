@@ -1,13 +1,8 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
-import YAML from "yaml"
-import fs from "node:fs"
+import sycfg from '../config/config.js'
 
-let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/bot.yaml", 'utf8'))
-let botname = botinfo.bot_name
+let botname=await sycfg.get_cfg('bot.yaml','bot_name')
 
-
-let yunyin_path = './plugins/sanyi-plugin/resources/yuyin/'
 export class youla extends plugin {
     constructor() {
         super({
