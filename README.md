@@ -52,7 +52,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 
 |   命令|使用说明   |
-|---|---|
+|---|-------------|
 |#三一帮助|查看命令帮助|
 |#三一版本|查看版本改动
 |训练|好感度玩法|
