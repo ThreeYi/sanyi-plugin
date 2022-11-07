@@ -51,7 +51,6 @@ export class yule extends plugin {
         }
     }
     async niuyao(e) {
-        return false  //api 无了，等后面看看会不会再发出来
         fs.exists('./plugins/sanyi-plugin/resources/temp.mp4', (exists) => {
             if (exists) {
                 fs.unlink('./plugins/sanyi-plugin/resources/temp.mp4', function(err) {
