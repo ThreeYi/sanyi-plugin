@@ -48,6 +48,14 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 
 2、没有写容错，注意命令格式
 ### 命令（没加#号的命令加#不会触发）
+|   命令|使用说明   |
+|---|---|
+|三一帮助|查看命令帮助|
+
+
+
+
+
   
  0、#三一帮助 #三一版本   //查看命令帮助和版本改动
 
