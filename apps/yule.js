@@ -12,25 +12,21 @@ export class yule extends plugin {
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: "^绿茶语音$",
-                    fnc: "yuyin",
-                },
-                {
-                    reg: "^#企鹅估值$",
-                    fnc: "guzhi"
-                },
-                {
-                    reg: "^扭腰$",
-                    fnc: 'niuyao',
-                },
-                {
-                    reg: "^重置扭腰$",
-                    fnc: 'reniuyao',
-                },
-                {
-                    reg: "^舔狗日记$",
-                    fnc: 'tian_gou',
-                },
+                reg: "^绿茶语音$",
+                fnc: "yuyin",
+            },
+            {
+                reg: "^#企鹅估值$",
+                fnc: "guzhi"
+            },
+            {
+                reg: "^扭腰$",
+                fnc: 'niuyao',
+            },
+            {
+                reg: "^舔狗日记$",
+                fnc: 'tian_gou',
+            },
             ],
         });
     }
@@ -43,7 +39,7 @@ export class yule extends plugin {
     async guzhi(e) {
         if (e.isGroup) {
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
-             await e.reply(segment.image(url1)).then(mes => {
+            await e.reply(segment.image(url1)).then(mes => {
                 setTimeout(() => {
                     e.group.recallMsg(mes.message_id);
                 }, 50000);
@@ -51,67 +47,29 @@ export class yule extends plugin {
         }
     }
     async niuyao(e) {
-        fs.exists('./plugins/sanyi-plugin/resources/temp.mp4', (exists) => {
-            if (exists) {
-                fs.unlink('./plugins/sanyi-plugin/resources/temp.mp4', function(err) {
-                    if (err) {
-                        console.log(err)
-                        return false
-                    }
-                    console.log('已经删除上次缓存旧文件')
-                })
-            } else {
-                console.log("文件不存在");
-            }
-        });
-        let cd = await redis.get(`Yz:sanyi:yule:niuyao:cd`)
-        if (!cd || Number(cd) == 0) {
-            let b = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286').then(data => { return data.text() })
-            if (b != '获取json数量错误') {
-                // e.reply(`@${e.nickname}你要的东西来了` + b)
-                let url = b.split('\n')[1]
-                let res = await fetch(url)
-                res = await res.arrayBuffer()
-                const video_data = Buffer.from(res);
-                await fs.writeFile("./plugins/sanyi-plugin/resources/temp.mp4", video_data, { encoding: 'binary', }, function(err) {
+        let res_url = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286')
+        if (res_url.status == 200) {
+            let res_text = await res_url.text()
+            if (res_text != '获取json数量错误') {
+                let res_video = await fetch(res_text.split('\n')[1])
+                let video_data = await res_video.arrayBuffer();
+                fs.writeFile("./plugins/sanyi-plugin/resources/nysp.mp4", Buffer.from(video_data), "binary", function (err) {
+                    console.log(err || "下载视频成功");
                     if (!err) {
-                        console.log("写入成功");
-                        e.reply('稍等，马上就到')
-                        try {
-                            e.reply(segment.video('./plugins/sanyi-plugin/resources/temp.mp4'))
-                        } catch (err) {
-                            console.log(err)
-                            e.reply('太瑟了发不出来，换个看看吧')
-                            fs.unlink('./plugins/sanyi-plugin/resources/temp.mp4', function(err) {
-                                if (err) {
-                                    console.log(err)
-                                    return false
-                                }
-                                console.log('已经删除已存在视频')
-                            })
-                        }
+                        e.reply(segment.video('./plugins/sanyi-plugin/resources/nysp.mp4'));
                     }
-                })
-
-                redis.set(`Yz:sanyi:yule:niuyao:cd`, 10).then(data => {
-                    setTimeout(() => {
-                        redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
-                    }, 10000)
-                })
+                });
             } else {
-                e.reply('你要的东西坐火箭去太空了，再试一遍吧')
+                e.reply('小姐姐坐火箭去太空了')
             }
         } else {
-            e.reply('现在是圣贤时间，休息一下再来吧')
+            e.reply('卖力找了一圈，没找到你想要的')
         }
     }
-    async reniuyao(e) {
-        await redis.set(`Yz:sanyi:yule:niuyao:cd`, 0)
-        e.reply('祭礼枪被动触发,已重置圣贤时间cd')
-    }
+
     async tian_gou(e) {
         let pl = process.cwd()
-        fs.readFile('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function(err, data) {
+        fs.readFile('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function (err, data) {
             if (err) {
                 console.log(err);
                 return false;
