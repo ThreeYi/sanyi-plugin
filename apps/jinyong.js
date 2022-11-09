@@ -33,7 +33,7 @@ export class jinyong extends plugin {
             this.file = './config/config/group.yaml'
             let data = YAML.parse(fs.readFileSync(this.file, 'utf8'))
             console.log(data)
-            data[e.group_id] = { enable: ["机器人群开关", ] }
+            data[e.group_id] = { enable: ["sy:机器人群开关", ] }
             let yaml = YAML.stringify(data)
             fs.writeFileSync(this.file, yaml, "utf8")
             e.reply(closetip)
