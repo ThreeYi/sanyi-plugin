@@ -1,23 +1,24 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import sycfg from '../config/config.js'
 
-let botname=await sycfg.get_cfg('bot.yaml','bot_name')
+let botname = await sycfg.get_cfg('bot.yaml', 'bot_name')
+let a=botname
 
 export class youla extends plugin {
     constructor() {
         super({
-            name: "sy:bot对话",
+            name: "sy:bot对话", //根据好感度双标
             dsc: "收到指定消息后回复",
             event: "message",
             priority: 5000,
             rule: [{
-                    reg: `${botname}贴贴`,
-                    fnc: 'tietie',
-                },
-                {
-                    reg: `${botname}摸摸`,
-                    fnc: 'momo',
-                },
+                reg: `^${botname}贴贴$`,
+                fnc: 'tietie',
+            },
+            {
+                reg: `^${botname}摸摸$`,
+                fnc: 'momo',
+            },
 
 
             ],
@@ -27,21 +28,36 @@ export class youla extends plugin {
 
 
     async tietie(e) {
-        let mo = [
-            '离我远点，真是可耻又无礼的行为',
-            '贴..贴贴(靠近'
-        ]
-        let index = Math.floor((Math.random() * mo.length));
-        e.reply(mo[index])
+
+        let b = e.nickname
+        console.log(b)
+        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
+        if (!favorability || Number(favorability) < 10) {
+            e.reply('你想挨拳头吗')
+        } else if (10 < Number(favorability) < 20) {
+            e.reply('要是旅行者的话，也不是不可以')
+        }
+        else {
+            e.reply('贴..贴贴(靠近')
+        }
+
 
     }
     async momo(e) {
-        let tie = [
-            '你在做什么...这......这可是很失礼的',
-            '呐,给你摸好了(伸手'
-        ]
-        let index = Math.floor((Math.random() * tie.length));
-        e.reply(tie[index])
+        let b = e.nickname
+        console.log(b)
+        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
+        if (!favorability || Number(favorability) < 10) {
+            e.reply('想尝尝煎饼，蛋卷生抽吗')
+
+        } else if (10 < Number(favorability) < 20) {
+            e.reply('要是旅行者的话，也不是不可以')
+        }
+        else {
+
+            e.reply('呐，给你摸好了（伸手')
+        }
+
 
     }
 
