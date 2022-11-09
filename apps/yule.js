@@ -31,6 +31,10 @@ export class yule extends plugin {
                 reg: "^老婆骂我$",
                 fnc: 'mawo',
             },
+            {
+                reg: "^渣男语录$",
+                fnc: 'zhanan',
+            },
             ],
         });
     }
@@ -110,4 +114,11 @@ export class yule extends plugin {
         let i = String(Math.floor(Math.random() * 60))
         e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/mawo/${i}.mp3`, 0, false))
     }
+    async zhanan(e){
+        let a= fs.readFileSync('./plugins/sanyi-plugin/resources/yule/渣男语录.txt', 'UTF-8')
+         let b=a.split('\n')
+         let i = Math.floor(Math.random() * b.length)
+         e.reply(b[i])
+    }
+  
 }

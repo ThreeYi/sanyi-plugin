@@ -1,10 +1,1 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-# Other files and folders
-
-# Executables
-.mp3
+test.js

@@ -56,9 +56,13 @@ export const helpList = [
     title: '#企鹅估值',
     desc: '图一乐，时代的眼泪'
   },{
-    icon: 24,
+    icon: 60,
     title: '老婆骂我',
     desc: '^_^'
+  },{
+    icon: 42,
+    title: '渣男语录',
+    desc: '他只是我的妹妹'
   }
 ]
 },{
