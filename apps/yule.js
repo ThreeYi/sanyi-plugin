@@ -45,14 +45,13 @@ export class yule extends plugin {
         e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/lvcha/${i}.mp3`, 0, false))
     }
     async guzhi(e) {
-        if (e.isGroup) {
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
             await e.reply(segment.image(url1)).then(mes => {
                 setTimeout(() => {
                     e.group.recallMsg(mes.message_id);
                 }, 50000);
             })
-        }
+        
     }
     async niuyao(e) {
         let res_url = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286')
