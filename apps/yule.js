@@ -27,6 +27,10 @@ export class yule extends plugin {
                 reg: "^舔狗日记$",
                 fnc: 'tian_gou',
             },
+            {
+                reg: "^#骂我$",
+                fnc: 'mawo',
+            },
             ],
         });
     }
@@ -101,6 +105,9 @@ export class yule extends plugin {
                 e.reply(img)
             })
         })
-
+    }
+    async mawo(e) {
+        let i = String(Math.floor(Math.random() * 60))
+        e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/mawo/${i}.mp3`, 0, false))
     }
 }
