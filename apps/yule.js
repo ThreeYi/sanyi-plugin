@@ -46,7 +46,7 @@ export class yule extends plugin {
     }
     async guzhi(e) {
         let a=e.msg.split(' ')
-        if (a.length==1 & a=='^#企鹅估值'){
+        if (a.length==1 & a=='#企鹅估值'){
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
                 await e.reply(segment.image(url1)).then(mes => {
                     setTimeout(() => {
