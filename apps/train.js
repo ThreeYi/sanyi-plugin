@@ -2,7 +2,7 @@ import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 import sycfg from '../config/config.js'
 
-const a=await sycfg.get_cfg('bot.yaml','bot_name')
+const c=await sycfg.get_cfg('bot.yaml','bot_name')
 
 function nowday() {
     var nowtime = new Date()
@@ -38,7 +38,7 @@ export class train extends plugin {
 
 
 
-    async changeFavorability(a, b, value) {
+    async changeFavorability(a, b,c,d ,value) {
         let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         let cishu = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
@@ -58,11 +58,11 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:favorability`, favorability)
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, String(cishu))
             if (value > 0) {
-                this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
+                this.reply(`训练很卖力\n${c} 对 ${d} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
             } else if (value < 0) {
-                this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
+                this.reply(`训练心不在焉的\n${c} 对 ${d} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
             } else {
-                this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
+                this.reply(`训练了一会\n${c} 对 ${d} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         } else if (String(riqi) != nowday()) {
             cishu = 1
@@ -71,24 +71,26 @@ export class train extends plugin {
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:cishu`, String(cishu))
             await redis.set(`Yz:sanyi:favorability:${a}:${b}:riqi`, nowday())
             if (value > 0) {
-                this.reply(`训练很卖力\n${a} 对 ${b} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
+                this.reply(`训练很卖力\n${c} 对 ${d} 的好感度增加了 ${value}\n当前好感度: ${favorability}`)
             } else if (value < 0) {
-                this.reply(`训练心不在焉的\n${a} 对 ${b} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
+                this.reply(`训练心不在焉的\n${c} 对 ${d} 的好感度降低了 ${Math.abs(value)}\n当前好感度: ${favorability}`)
             } else {
-                this.reply(`训练了一会\n${a} 对 ${b} 的好感度不变呢\n当前好感度: ${favorability}`)
+                this.reply(`训练了一会\n${c} 对 ${d} 的好感度不变呢\n当前好感度: ${favorability}`)
             }
         } else {
-            this.reply(`@${b}\n今天已经训练很久了，休息一下明天再来吧!当前好感度:${favorability}`)
+            this.reply(`@${d}\n今天已经训练很久了，休息一下明天再来吧!当前好感度:${favorability}`)
         }
 
 
     }
-    async xunlian(e) {
+    async xunlian(e) { //a 机器人QQ号 b 发消息的人qq号 c 机器人呢昵称 d 发消息的人的昵称
         if (e.isPrivate) {
             e.reply('请在群聊中使用')
             return true
         }
-        let b = e.nickname
+        let a=String(Bot.uin)
+        let b = String(e.user_id)
+        let d=e.nickname
         let value = 0
         value += Math.floor(Math.random() * 4)
         this.changeFavorability(a, b, value)

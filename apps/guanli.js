@@ -45,6 +45,7 @@ export class guanli extends plugin {
     }
 
     async get_sign(e) {
+        e.reply('开始获取好友个性签名，每个好友预计花费3s，全部完成后会有提示。')
         let f = Bot.fl
         for (let [key, value] of f) {
             let url = 'https://find.qq.com/proxy/domain/cgi.find.qq.com/qqfind/find_v11?backver=2'
