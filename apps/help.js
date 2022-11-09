@@ -7,7 +7,7 @@ export class sanyi_help extends plugin {
 	constructor () {
 		super({
 			/** 功能名称 */
-			name: '三一插件_帮助',
+			name: 'sy:三一插件帮助',
 			/** 功能描述 */
 			dsc: '',
 			/** https://oicqjs.github.io/oicq/#events */

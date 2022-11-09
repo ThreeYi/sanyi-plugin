@@ -4,7 +4,7 @@ import fs from "node:fs"
 export class data_recover extends plugin {
     constructor() {
         super({
-            name: "数据库备份",
+            name: "sy:数据库备份",
             dsc: "数据库里面的数据备份",
             event: "message",
             priority: 5000,

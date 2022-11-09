@@ -9,7 +9,7 @@ let closetip = botinfo.close_tip
 export class jinyong extends plugin {
     constructor() {
         super({
-            name: "机器人群开关",
+            name: "sy:机器人群开关",
             dsc: "控制机器人在指定群开关",
             event: "message",
             priority: -10,

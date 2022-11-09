@@ -20,7 +20,7 @@ function isInArray(arr, value) {
 export class guanli extends plugin {
     constructor() {
         super({
-            name: "管理命令",
+            name: "sy:管理命令",
             dsc: "管理员命令",
             event: "message",
             priority: 5000,

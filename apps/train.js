@@ -14,7 +14,7 @@ function nowday() {
 export class train extends plugin {
     constructor() {
         super({
-            name: "训练",
+            name: "sy:训练",
             dsc: "通过训练增加好感度",
             event: "message",
             priority: 3000,

@@ -7,7 +7,7 @@ import uploadRecord from '../model/uploadRecord.js'
 export class yule extends plugin {
     constructor() {
         super({
-            name: "娱乐功能",
+            name: "sy:娱乐功能",
             dsc: "一些娱乐小功能",
             event: "message",
             priority: 5000,

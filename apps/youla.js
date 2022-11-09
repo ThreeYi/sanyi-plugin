@@ -6,7 +6,7 @@ let botname=await sycfg.get_cfg('bot.yaml','bot_name')
 export class youla extends plugin {
     constructor() {
         super({
-            name: "优菈对话",
+            name: "sy:bot对话",
             dsc: "收到指定消息后回复",
             event: "message",
             priority: 5000,

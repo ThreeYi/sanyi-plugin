@@ -7,7 +7,7 @@ export class sanyi_update extends plugin {
 	constructor () {
 		super({
 			/** 功能名称 */
-			name: '三一插件更新',
+			name: 'sy:三一插件更新',
 			/** 功能描述 */
 			dsc: '调用Yunzai自带更新模块进行插件更新',
 			/** https://oicqjs.github.io/oicq/#events */
