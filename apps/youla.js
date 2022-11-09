@@ -2,7 +2,7 @@ import plugin from '../../../lib/plugins/plugin.js'
 import sycfg from '../config/config.js'
 
 let botname = await sycfg.get_cfg('bot.yaml', 'bot_name')
-let a=botname
+let a = botname
 
 export class youla extends plugin {
     constructor() {
@@ -31,10 +31,10 @@ export class youla extends plugin {
 
         let b = e.nickname
         console.log(b)
-        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
-        if (!favorability || Number(favorability) < 10) {
+        let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
+        if (!favorability || favorability < 10) {
             e.reply('你想挨拳头吗')
-        } else if (10 < Number(favorability) < 20) {
+        } else if (favorability < 20) {
             e.reply('要是旅行者的话，也不是不可以')
         }
         else {
@@ -46,11 +46,11 @@ export class youla extends plugin {
     async momo(e) {
         let b = e.nickname
         console.log(b)
-        let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
-        if (!favorability || Number(favorability) < 10) {
+        let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
+        if (!favorability || favorability < 10) {
             e.reply('想尝尝煎饼，蛋卷生抽吗')
 
-        } else if (10 < Number(favorability) < 20) {
+        } else if (favorability < 20) {
             e.reply('要是旅行者的话，也不是不可以')
         }
         else {
