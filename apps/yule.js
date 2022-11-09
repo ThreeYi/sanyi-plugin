@@ -16,7 +16,7 @@ export class yule extends plugin {
                 fnc: "lvchayuyin",
             },
             {
-                reg: "^#企鹅估值$",
+                reg: "^#企鹅估值",
                 fnc: "guzhi"
             },
             {
@@ -45,13 +45,34 @@ export class yule extends plugin {
         e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/lvcha/${i}.mp3`, 0, false))
     }
     async guzhi(e) {
+        let a=e.msg.split(' ')
+        if (a.length==1 & a=='^#企鹅估值'){
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
-            await e.reply(segment.image(url1)).then(mes => {
-                setTimeout(() => {
-                    e.group.recallMsg(mes.message_id);
-                }, 50000);
-            })
-        
+                await e.reply(segment.image(url1)).then(mes => {
+                    setTimeout(() => {
+                        if(e.isGroup){
+                            e.group.recallMsg(mes.message_id)
+                        }else{
+                            let user0=Bot.pickUser(e.user_id)
+                            user0.recallMsg(mes.message_id)
+                        }
+                    }, 50000);
+                })}
+        else if(a.length==2){
+            let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + a[1]
+                await e.reply(segment.image(url1)).then(mes => {
+                    setTimeout(() => {
+                       if(e.isGroup){
+                            e.group.recallMsg(mes.message_id)
+                        }else{
+                            let user0=Bot.pickUser(e.user_id)
+                            user0.recallMsg(mes.message_id)
+                        }
+                    }, 50000);
+                })
+        }else{
+            e.reply('输入有误')
+        }
     }
     async niuyao(e) {
         let res_url = await fetch('http://api.xn--7gqa009h.top/api/nysp?key=25632286')
