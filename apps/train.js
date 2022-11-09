@@ -2,7 +2,8 @@ import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
 import sycfg from '../config/config.js'
 
-const c=await sycfg.get_cfg('bot.yaml','bot_name')
+const a = String(Bot.uin)
+const c = await sycfg.get_cfg('bot.yaml', 'bot_name')
 
 function nowday() {
     var nowtime = new Date()
@@ -19,18 +20,18 @@ export class train extends plugin {
             event: "message",
             priority: 3000,
             rule: [{
-                    reg: "^训练$", //好感度玩法触发词
-                    fnc: "xunlian",
-                },
-                {
-                    reg: "好感查询", //好感度排行
-                    fnc: 'haogan',
-                },
-                {
-                    reg: "^恢复", //手动调整好感度，格式： 恢复|小白|12 将小白好感度设置为15
-                    fnc: "huifu",
-                    permission: 'master'
-                },
+                reg: "^训练$", //好感度玩法触发词
+                fnc: "xunlian",
+            },
+            {
+                reg: "好感查询", //好感度排行
+                fnc: 'haogan',
+            },
+            {
+                reg: "^恢复", //手动调整好感度，格式： 恢复|小白|12 将小白好感度设置为15
+                fnc: "huifu",
+                permission: 'master'
+            },
             ],
         });
     }
@@ -38,7 +39,7 @@ export class train extends plugin {
 
 
 
-    async changeFavorability(a, b,c,d ,value) {
+    async changeFavorability(a, b, c, d, value) {
         let favorability = await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`)
         let riqi = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:riqi`))
         let cishu = (await redis.get(`Yz:sanyi:favorability:${a}:${b}:cishu`))
@@ -88,28 +89,32 @@ export class train extends plugin {
             e.reply('请在群聊中使用')
             return true
         }
-        let a=String(Bot.uin)
+
         let b = String(e.user_id)
-        let d=e.nickname
-        let value = 0
-        value += Math.floor(Math.random() * 4)
-        this.changeFavorability(a, b, value)
+        let d = e.nickname
+        let value = 1
+        value += Math.floor(Math.random() * 3)
+        this.changeFavorability(a, b, c, d, value)
 
     }
     async haogan(e) {
-
-        let favorability = await redis.keys('Yz:sanyi:favorability:优菈:*:favorability')
+        if (e.isPrivate) {
+            e.reply('请在群聊中使用')
+            return true
+        }
+        let favorability = await redis.keys(`Yz:sanyi:favorability:${a}:*:favorability`)
         favorability = String(favorability)
-        favorability = favorability.replace(RegExp("Yz:sanyi:favorability:优菈:", "g"), '')
+        favorability = favorability.replace(RegExp(`Yz:sanyi:favorability:${a}:`, "g"), '')
         favorability = favorability.replace(RegExp(":favorability", 'g'), '')
         let name_list = favorability.split(',')
         let haogan_list = []
         for (let name in name_list) {
-            let haogan = await redis.get(`Yz:sanyi:favorability:优菈:${name_list[name]}:favorability`)
-            haogan_list.push([name_list[name], haogan])
+            let haogan = await redis.get(`Yz:sanyi:favorability:${a}:${name_list[name]}:favorability`)
+            let mem = e.group.pickMember(Number(name_list[name]))
+            haogan_list.push([mem.card, haogan])
         }
 
-
+        console.log(haogan_list)
         for (let i = 0; i < haogan_list.length - 1; i++) { //代表第几轮比较
             for (let j = 0; j < haogan_list.length - 1 - i; j++) { //每一轮的两两相邻元素比较
                 if (Number(haogan_list[j][1]) < Number(haogan_list[j + 1][1])) { //相邻元素比较

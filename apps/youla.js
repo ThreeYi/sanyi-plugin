@@ -1,8 +1,8 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import sycfg from '../config/config.js'
 
-let botname = await sycfg.get_cfg('bot.yaml', 'bot_name')
-let a = botname
+const botname = await sycfg.get_cfg('bot.yaml', 'bot_name')
+const a = String(Bot.uin)
 
 export class youla extends plugin {
     constructor() {
@@ -29,8 +29,7 @@ export class youla extends plugin {
 
     async tietie(e) {
 
-        let b = e.nickname
-        console.log(b)
+        let b = String(e.user_id)
         let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         if (!favorability || favorability < 10) {
             e.reply('你想挨拳头吗')
@@ -44,8 +43,7 @@ export class youla extends plugin {
 
     }
     async momo(e) {
-        let b = e.nickname
-        console.log(b)
+        let b = String(e.user_id)
         let favorability = Number(await redis.get(`Yz:sanyi:favorability:${a}:${b}:favorability`))
         if (!favorability || favorability < 10) {
             e.reply('想尝尝煎饼，蛋卷生抽吗')
