@@ -107,11 +107,13 @@ export class train extends plugin {
         favorability = favorability.replace(RegExp(`Yz:sanyi:favorability:${a}:`, "g"), '')
         favorability = favorability.replace(RegExp(":favorability", 'g'), '')
         let name_list = favorability.split(',')
+        console.log(name_list)
         let haogan_list = []
         for (let name in name_list) {
             let haogan = await redis.get(`Yz:sanyi:favorability:${a}:${name_list[name]}:favorability`)
-            let mem = e.group.pickMember(Number(name_list[name]))
-            haogan_list.push([mem.card, haogan])
+            let user0 = Bot.pickUser(Number(name_list[name]))
+            let info = await user0.getSimpleInfo()
+            haogan_list.push([info.nickname, haogan])
         }
 
         console.log(haogan_list)
