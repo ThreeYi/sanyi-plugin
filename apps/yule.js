@@ -28,7 +28,7 @@ export class yule extends plugin {
                 fnc: 'tian_gou',
             },
             {
-                reg: "^我错了$",
+                reg: "^老婆骂我$",
                 fnc: 'mawo',
             },
             ],

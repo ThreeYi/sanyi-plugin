@@ -55,7 +55,12 @@ export const helpList = [
     icon: 24,
     title: '#企鹅估值',
     desc: '图一乐，时代的眼泪'
-  }]
+  },{
+    icon: 24,
+    title: '老婆骂我',
+    desc: '^_^'
+  }
+]
 },{
   group: '管理命令，仅管理员可用',
   auth: 'master',
