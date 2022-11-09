@@ -13,7 +13,7 @@ export class yule extends plugin {
             priority: 5000,
             rule: [{
                 reg: "^绿茶语音$",
-                fnc: "yuyin",
+                fnc: "lvchayuyin",
             },
             {
                 reg: "^#企鹅估值$",
@@ -28,7 +28,7 @@ export class yule extends plugin {
                 fnc: 'tian_gou',
             },
             {
-                reg: "^#骂我$",
+                reg: "^我错了$",
                 fnc: 'mawo',
             },
             ],
@@ -36,9 +36,9 @@ export class yule extends plugin {
     }
 
 
-    async yuyin(e) {
-        let url = "http://xiaobapi.top/api/xb/api/lvcha.php";
-        e.reply(await uploadRecord(url, 0, false))
+    async lvchayuyin(e) {
+        let i = String(Math.floor(Math.random() * 40))
+        e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/lvcha/${i}.mp3`, 0, false))
     }
     async guzhi(e) {
         if (e.isGroup) {
