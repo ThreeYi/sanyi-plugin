@@ -41,7 +41,7 @@ export const helpList = [
     desc: '上下班,用bot名字换掉优菈'
   },{
     icon: 40,
-    title: '训练',
+    title: '训练  好感查询',
     desc: '好感度玩法'
   },{
     icon: 71,
