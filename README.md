@@ -8,8 +8,6 @@
 ### 软件架构
 js一窍不通，只有依葫芦画瓢的程度,有些还没完善
 
-cv了[@小飞](https://gitee.com/xfdown)大佬的高清语音 ，特别感谢
-
 功能：
 
       1、戳一戳
@@ -73,8 +71,6 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 |#好友列表 #群列表|获取机器人好友和群|
 |#数据库备份 #数据库恢复|redis里面的东西备份到文件，使用恢复功能从文件恢复数据到redis，要先备份才能恢复|
 |#三一更新 #三一强制更新|更新命令|
-|#三一帮助|查看命令帮助|
-|#三一版本|查看版本改动|
 
 ### 其他
 [gitee地址](https://gitee.com/ThreeYi/sanyi-plugin)/[github地址](https://github.com/ThreeYi/sanyi-plugin)
