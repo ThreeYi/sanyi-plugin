@@ -38,7 +38,7 @@ export const helpList = [
   },{
     icon: 9,
     title: '#优菈上班 #优菈下班 ',
-    desc: '上下班,用bot名字换掉优菈'
+    desc: '上下班命令,可在配置文件修改'
   },{
     icon: 40,
     title: '训练  好感查询',
