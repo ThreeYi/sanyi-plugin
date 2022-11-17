@@ -1,11 +1,13 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import YAML from "yaml"
 import fs from "node:fs"
+import sycfg from '../config/config.js'
 
-let botinfo = YAML.parse(fs.readFileSync("./plugins/sanyi-plugin/config/config/bot.yaml", 'utf8'))
-let botname = botinfo.bot_name
-let starttip = botinfo.start_tip
-let closetip = botinfo.close_tip
+const starttip = await sycfg.get_cfg('bot.yaml', 'start_tip')
+const closetip = await sycfg.get_cfg('bot.yaml', 'close_tip')
+const startorder = await sycfg.get_cfg('bot.yaml', 'start_order')
+const closeorder = await sycfg.get_cfg('bot.yaml', 'close_order')
+
 export class jinyong extends plugin {
     constructor() {
         super({
@@ -14,12 +16,12 @@ export class jinyong extends plugin {
             event: "message",
             priority: -10,
             rule: [{
-                    reg: `^#${botname}下班$`,
+                    reg: `^${closeorder}$`,
                     fnc: "jinyong",
                     permission: 'master',
                 },
                 {
-                    reg: `^#${botname}上班$`,
+                    reg: `^${startorder}$`,
                     fnc: "kaiqi",
                     permission: 'master',
                 },
