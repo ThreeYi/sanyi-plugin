@@ -69,6 +69,7 @@ git clone https://gitee.com/ThreeYi/sanyi-plugin.git ./plugins/sanyi-plugin/
 |---|---|
 |#优菈上班 #优菈下班|在config/config/bot.yaml中修改bot名字和上下班提示词|
 |#好友列表 #群列表|获取机器人好友和群|
+|#获取好友个性签名|执行后好友列表会显示签名|
 |#数据库备份 #数据库恢复|redis里面的东西备份到文件，使用恢复功能从文件恢复数据到redis，要先备份才能恢复|
 |#三一更新 #三一强制更新|更新命令|
 
