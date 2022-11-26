@@ -45,32 +45,33 @@ export class yule extends plugin {
         e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/lvcha/${i}.mp3`, 0, false))
     }
     async guzhi(e) {
-        let a=e.msg.split(' ')
-        if (a.length==1 & a=='#企鹅估值'){
+        let a = e.msg.split(' ')
+        if (a.length == 1 & a == '#企鹅估值') {
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + e.user_id
-                await e.reply(segment.image(url1)).then(mes => {
-                    setTimeout(() => {
-                        if(e.isGroup){
-                            e.group.recallMsg(mes.message_id)
-                        }else{
-                            let user0=Bot.pickUser(e.user_id)
-                            user0.recallMsg(mes.message_id)
-                        }
-                    }, 50000);
-                })}
-        else if(a.length==2){
+            await e.reply(segment.image(url1)).then(mes => {
+                setTimeout(() => {
+                    if (e.isGroup) {
+                        e.group.recallMsg(mes.message_id)
+                    } else {
+                        let user0 = Bot.pickUser(e.user_id)
+                        user0.recallMsg(mes.message_id)
+                    }
+                }, 50000);
+            })
+        }
+        else if (a.length == 2) {
             let url1 = 'https://xiaobapi.top/api/xb/api/qq_gujia.php?qq=' + a[1]
-                await e.reply(segment.image(url1)).then(mes => {
-                    setTimeout(() => {
-                       if(e.isGroup){
-                            e.group.recallMsg(mes.message_id)
-                        }else{
-                            let user0=Bot.pickUser(e.user_id)
-                            user0.recallMsg(mes.message_id)
-                        }
-                    }, 50000);
-                })
-        }else{
+            await e.reply(segment.image(url1)).then(mes => {
+                setTimeout(() => {
+                    if (e.isGroup) {
+                        e.group.recallMsg(mes.message_id)
+                    } else {
+                        let user0 = Bot.pickUser(e.user_id)
+                        user0.recallMsg(mes.message_id)
+                    }
+                }, 50000);
+            })
+        } else {
             e.reply('输入有误')
         }
     }
@@ -81,12 +82,13 @@ export class yule extends plugin {
             if (res_text != '获取json数量错误') {
                 let res_video = await fetch(res_text.split('\n')[1])
                 let video_data = await res_video.arrayBuffer();
-                fs.writeFile("./plugins/sanyi-plugin/resources/nysp.mp4", Buffer.from(video_data), "binary", function (err) {
+                fs.writeFileSync("./plugins/sanyi-plugin/resources/nysp.mp4", Buffer.from(video_data), "binary", function (err) {
                     console.log(err || "下载视频成功");
                     if (!err) {
-                        e.reply(segment.video('./plugins/sanyi-plugin/resources/nysp.mp4'));
+                        console.log('准备发送')
                     }
                 });
+                await e.reply(segment.video('./plugins/sanyi-plugin/resources/nysp.mp4'));
             } else {
                 e.reply('小姐姐坐火箭去太空了')
             }
@@ -97,7 +99,7 @@ export class yule extends plugin {
 
     async tian_gou(e) {
         let pl = process.cwd()
-        fs.readFile('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function (err, data) {
+        fs.readFileSync('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function (err, data) {
             if (err) {
                 console.log(err);
                 return false;
@@ -134,11 +136,11 @@ export class yule extends plugin {
         let i = String(Math.floor(Math.random() * 60))
         e.reply(await uploadRecord(`./plugins/sanyi-plugin/resources/yule/mawo/${i}.mp3`, 0, false))
     }
-    async zhanan(e){
-        let a= fs.readFileSync('./plugins/sanyi-plugin/resources/yule/渣男语录.txt', 'UTF-8')
-         let b=a.split('\n')
-         let i = Math.floor(Math.random() * b.length)
-         e.reply(b[i])
+    async zhanan(e) {
+        let a = fs.readFileSync('./plugins/sanyi-plugin/resources/yule/渣男语录.txt', 'UTF-8')
+        let b = a.split('\n')
+        let i = Math.floor(Math.random() * b.length)
+        e.reply(b[i])
     }
-  
+
 }
