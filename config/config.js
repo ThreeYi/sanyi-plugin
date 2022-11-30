@@ -9,6 +9,12 @@ export default new class sycfg {
     }
 
     async initconfig() {
+        //判断云崽data目录下是否存在sy文件夹，不存在则创建，该用来保存sanyi-pllugin产生的重要文件
+        if (!fs.existsSync("./data/sy")) {
+            fs.mkdirSync("./data/sy");
+        }
+
+        //如果用户配置文件不存在，将默认配置文件复制到用户配置
         const files = fs.readdirSync(this.default_config_path).filter(file => file.endsWith('.yaml'))
         for (let file of files) {
             if (!fs.existsSync(`${this.config_path}${file}`)) {
@@ -17,19 +23,20 @@ export default new class sycfg {
         }
     }
 
-    async get_cfg(filename,cfgname){
+    //读取配置文件
+    async get_cfg(filename, cfgname) {
         let cfg_list
         let cfg_value
-        try{
-            cfg_list=YAML.parse(fs.readFileSync(this.config_path+filename, 'utf8'))
-        }catch{
-            cfg_list=YAML.parse(fs.readFileSync(this.default_config_path+filename, 'utf8'))
+        try {
+            cfg_list = YAML.parse(fs.readFileSync(this.config_path + filename, 'utf8'))
+        } catch {
+            cfg_list = YAML.parse(fs.readFileSync(this.default_config_path + filename, 'utf8'))
         }
-        cfg_value=cfg_list[cfgname]
-        if(cfg_value== undefined){
-            cfg_list=YAML.parse(fs.readFileSync(this.default_config_path+filename, 'utf8'))
-            cfg_value=cfg_list[cfgname]
+        cfg_value = cfg_list[cfgname]
+        if (cfg_value == undefined) {
+            cfg_list = YAML.parse(fs.readFileSync(this.default_config_path + filename, 'utf8'))
+            cfg_value = cfg_list[cfgname]
         }
-        return  cfg_value
+        return cfg_value
     }
 }
