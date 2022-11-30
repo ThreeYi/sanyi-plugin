@@ -80,7 +80,7 @@ export class data_recover extends plugin {
                 }
             }
             logger.mark('数据库恢复结果:', `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个\n`, '恢复失败的条目：\n' + re_failkey)
+            e.reply('数据库恢复结果:\n' + `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个`)
         })
-        await e.reply('数据库恢复结果:\n' + `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个`)
     }
 }
