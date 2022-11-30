@@ -58,29 +58,22 @@ export class data_recover extends plugin {
         let re_fail_num = 0
         let re_ok_num = 0
         let re_failkey = ''
-        fs.readFileSync('./data/sy/redis_data.json', function (err, data) {
-            if (err) {
-                console.log(err);
+        let data = fs.readFileSync('./data/sy/redis_data.json', 'utf-8')
+        console.log(data.toString());
+        let redis_data = JSON.parse(data.toString())
+        console.log(typeof redis_data)
+        for (let key in redis_data) {
+            try {
+                re_ok_num = re_ok_num + 1
+                redis.set(key, redis_data[key])
+
+            } catch (err) {
+                re_fail_num++
+                console.log('恢复该条数据失败', `总共失败${re_fail_num}条`)
                 return false;
             }
-            console.log(data.toString());
-            let redis_data = JSON.parse(data.toString())
-            console.log(typeof redis_data)
-            // console.log(Object(redis_data))
-            for (let key in redis_data) {
-                try {
-                    re_ok_num = re_ok_num + 1
-                    // console.log(key, redis_data[key])
-                    redis.set(key, redis_data[key])
-
-                } catch (err) {
-                    re_fail_num++
-                    console.log('恢复该条数据失败', `总共失败${re_fail_num}条`)
-                    return false;
-                }
-            }
-            logger.mark('数据库恢复结果:', `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个\n`, '恢复失败的条目：\n' + re_failkey)
-            e.reply('数据库恢复结果:\n' + `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个`)
-        })
+        }
+        logger.mark('数据库恢复结果:', `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个\n`, '恢复失败的条目：\n' + re_failkey)
+        e.reply('数据库恢复结果:\n' + `恢复成功${re_ok_num}个，恢复失败${re_fail_num}个`)
     }
 }
