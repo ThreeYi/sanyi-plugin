@@ -59,9 +59,7 @@ export class data_recover extends plugin {
         let re_ok_num = 0
         let re_failkey = ''
         let data = fs.readFileSync('./data/sy/redis_data.json', 'utf-8')
-        console.log(data.toString());
         let redis_data = JSON.parse(data.toString())
-        console.log(typeof redis_data)
         for (let key in redis_data) {
             try {
                 re_ok_num = re_ok_num + 1
