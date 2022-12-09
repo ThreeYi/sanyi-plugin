@@ -105,13 +105,9 @@ export class yule extends plugin {
                 return false;
             }
             data = data.toString()
-            data = data.replace("*", "")
-            data = data.replace("'", "")
             let data_list = data.split('\n')
             let t_index = Math.ceil(Math.random() * data_list.length)
             let riji = data_list[t_index]
-            riji = riji.slice(1, riji.length - 3)
-            riji = riji.replace(/'\*'/g, '')
             let time = new Date()
             let day_date = String(time.getFullYear()) + '/' + String(time.getMonth() + 1) + '/' + String(time.getDate())
 
