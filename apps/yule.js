@@ -99,7 +99,7 @@ export class yule extends plugin {
 
     async tian_gou(e) {
         let pl = process.cwd()
-        fs.readFileSync('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function (err, data) {
+        fs.readFile('./plugins/sanyi-plugin/resources/yule/舔狗日记.txt', function (err, data) {
             if (err) {
                 console.log(err);
                 return false;
